@@ -19,7 +19,7 @@ class Task(models.Model):
     weight = models.IntegerField()
 
     date_added = models.DateTimeField(auto_now_add=True)
-    date_closed = models.DateTimeField(blank=True)
+    date_closed = models.DateTimeField(blank=True, null=True)
 
     def __unicode__(self):
         return self.title
