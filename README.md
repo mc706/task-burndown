@@ -10,7 +10,7 @@ do in a period of time.
 This app is yet another task app, this time incorporating the agile theory of point weight and burndown charts.
 
 ##Technology
-This app will use django1.7rc3 as a backend and angular with angular-material-design as a frontend and frontend framework.
+This app will use django1.7rc3 and django-rest-framework as a backend and angular with angular-material-design as a frontend and frontend framework.
 This should allow it to be desktop and mobile friendly out of the box, and allow for some power interactions.
 
 ##Requirements
