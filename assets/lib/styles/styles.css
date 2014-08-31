@@ -4703,6 +4703,9 @@ body {
   .app-root > div {
     height: 100%; }
 
+.error {
+  color: red; }
+
 .login-page {
   height: 100%; }
   .login-page material-toolbar {
@@ -4714,4 +4717,17 @@ body {
       .login-page material-content material-input-group input {
         width: 100%; }
     .login-page material-content material-button {
+      padding: 10px; }
+
+.register-page {
+  height: 100%; }
+  .register-page material-toolbar {
+    text-align: center; }
+  .register-page material-content {
+    background-color: white; }
+    .register-page material-content material-input-group {
+      padding: 0 15px; }
+      .register-page material-content material-input-group input {
+        width: 100%; }
+    .register-page material-content material-button {
       padding: 10px; }

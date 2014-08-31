@@ -1,0 +1,21 @@
+.register-page {
+  height: 100%;
+
+  material-toolbar {
+    text-align: center;
+  }
+  material-content {
+    background-color: white;
+
+    material-input-group {
+      padding: 0 15px;
+
+      input {
+        width:100%;
+      }
+    }
+    material-button {
+      padding:10px;
+    }
+  }
+}
