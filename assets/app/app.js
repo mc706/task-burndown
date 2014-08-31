@@ -41,5 +41,65 @@ app.config(function ($routeProvider, $locationProvider) {
                     return SprintService.listSprints();
                 }
             }
+        }).when('/tasks/',
+        {
+            controller: 'TaskController',
+            templateUrl: '/static/app/views/tasks.html',
+            resolve: {
+                tasks: function (TaskService) {
+                    return TaskService.listTasks();
+                },
+                categories: function (CategoryService) {
+                    return CategoryService.listCategories();
+                },
+                sprints: function (SprintService) {
+                    return SprintService.listSprints();
+                }
+            }
+        }).when('/sprints/',
+        {
+            controller: 'SprintController',
+            templateUrl: '/static/app/views/sprints.html',
+            resolve: {
+                tasks: function (TaskService) {
+                    return TaskService.listTasks();
+                },
+                categories: function (CategoryService) {
+                    return CategoryService.listCategories();
+                },
+                sprints: function (SprintService) {
+                    return SprintService.listSprints();
+                }
+            }
+        }).when('/categories/',
+        {
+            controller: 'CategoryController',
+            templateUrl: '/static/app/views/categories.html',
+            resolve: {
+                tasks: function (TaskService) {
+                    return TaskService.listTasks();
+                },
+                categories: function (CategoryService) {
+                    return CategoryService.listCategories();
+                },
+                sprints: function (SprintService) {
+                    return SprintService.listSprints();
+                }
+            }
+        }).when('/stats/',
+        {
+            controller: 'StatsController',
+            templateUrl: '/static/app/views/stats.html',
+            resolve: {
+                tasks: function (TaskService) {
+                    return TaskService.listTasks();
+                },
+                categories: function (CategoryService) {
+                    return CategoryService.listCategories();
+                },
+                sprints: function (SprintService) {
+                    return SprintService.listSprints();
+                }
+            }
         }).otherwise({redirectTo: '/'});
 });
