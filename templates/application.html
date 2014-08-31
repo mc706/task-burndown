@@ -1,9 +1,10 @@
 {% verbatim %}
 <div ng-app="task-burndown" class="app-root">
     <div ng-controller="GlobalController" layout="horizontal">
-        <material-sidenav layout="vertical" class="material-sidenav-left material-whiteframe-z3" id="left">
+        <material-sidenav layout="vertical" class="material-sidenav-left material-whiteframe-z3" component-id="left">
             <material-toolbar class="material-theme-light material-medium-tall">
                 <h1 class="material-toolbar-tools" style="padding-top:25px;">
+                    <i class="fa fa-2x fa-fire" ng-click="goHome();"></i>
                     <a href="#" ng-click="goHome()">Task<br>Burndown</a>
                 </h1>
             </material-toolbar>
