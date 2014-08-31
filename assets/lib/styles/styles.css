@@ -4738,3 +4738,8 @@ material-sidenav material-content material-button.menu-item {
         width: 100%; }
     .register-page material-content material-button {
       padding: 10px; }
+
+div.task-view material-content {
+  background-color: white; }
+  div.task-view material-content material-toobar {
+    padding: 5px 15px; }
