@@ -3,6 +3,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <title>Task Burndown - {% block title %}{% endblock title %}</title>
     <link rel="stylesheet" type="text/css" href="{% static "lib/styles/styles.css" %}">
     {% block styles %}{% endblock styles %}
@@ -13,13 +14,17 @@
 {% block bottom-content %}
 {% endblock bottom-content %}
 <!--scripts-->
+<script src="{% static "lib/scripts/vendor/angular.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular-animate.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular-cookies.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular-touch.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular-material.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular-route.js" %}"></script>
-<script src="{% static "lib/scripts/vendor/angular.js" %}"></script>
 <script src="{% static "app/app.js" %}"></script>
+<script src="{% static "app/controllers/globalController.js" %}"></script>
+<script src="{% static "app/controllers/homeController.js" %}"></script>
+<script src="{% static "app/services/taskService.js" %}"></script>
+<script src="{% static "app/services/sprintService.js" %}"></script>
 {% block script %}
 {% endblock script %}
 <!--/scripts-->
