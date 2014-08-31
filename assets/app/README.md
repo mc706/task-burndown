@@ -17,3 +17,4 @@ houses all of the views
 ##Conventions
 * Files are named using camelCase. 
 * The actual directives are int TitleCase.
+* All Javascript must be JSLinted
