@@ -5,20 +5,25 @@ app.run(function ($http, $cookies) {
     $http.defaults.headers.common['X-CSRFToken'] = $cookies.csrftoken;
 });
 
-app.config(function ($logProvider, $routeParams, $log) {
+app.config(function ($logProvider) {
     "use strict";
     //Enables Debug when ?debug=1&password=*password*
-    var password = "f48b9001e3972038d687a3dac8ebe8f9";
+    var password = "f48b9001e3972038d687a3dac8ebe8f9",
+        querystring = window.location.search.substring(1),
+        params = {};
+    angular.forEach(querystring.split('&'), function (pair) {
+        params[pair.split('=')[0]] = pair.split('=')[1];
+    });
     $logProvider.debugEnabled(false);
-    if ($routeParams.hasOwnProperty('debug') && $routeParams.hasOwnProperty('password')) {
-        if ($routeParams.debug && md5($routeParams.password) === password) {
+    if (params.hasOwnProperty('debug') && params.hasOwnProperty('password')) {
+        if (params.debug && md5(params.password) === password) {
             $logProvider.debugEnabled(true);
-            $log.info("Logging Enabled");
+            console.info("Logging Enabled");
         }
     }
 });
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     "use strict";
     $routeProvider.when('/',
         {
@@ -33,5 +38,5 @@ app.config(function ($routeProvider) {
                 }
             }
         });
-
+    $locationProvider.html5Mode(true);
 });
