@@ -21,11 +21,11 @@ def login_user(request):
                 return HttpResponse(status=200, content_type='application/json', content='{"login":true, "errors":[]}')
             else:
                 errors.append({'message': "Your account has been disabled"})
-                resp = {"login":False, "errors":errors}
+                resp = {"login": False, "errors": errors}
                 return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
         else:
             errors.append({'message': "The username and password you have entered do not match our records"})
-            resp = {"login":False, "errors":errors}
+            resp = {"login": False, "errors": errors}
             return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
     return render_to_response("login.html", {'errors': errors}, RequestContext(request))
 
@@ -55,14 +55,14 @@ def register(request):
             try:
                 user = User.objects.create_user(username, email, password)
                 user.save()
-                resp = {"registered":True, "errors":errors}
+                resp = {"registered": True, "errors": errors}
                 return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
             except Exception as ex:
                 errors.append({'message': ex})
-                resp = {"registered":False, "errors":errors}
+                resp = {"registered": False, "errors": errors}
                 return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
         else:
-            resp = {"login":False, "errors":errors}
+            resp = {"login": False, "errors": errors}
             return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
     return render_to_response("register.html", {'errors': errors}, RequestContext(request))
 
