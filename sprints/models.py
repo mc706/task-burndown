@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from tasks.models import Task
 
 
 class Sprint(models.Model):
@@ -14,7 +13,6 @@ class Sprint(models.Model):
     name = models.CharField(max_length=100, blank=True, help_text="Sprint Name")
     date_start = models.DateField()
     date_finish = models.DateField()
-    tasks = models.ManyToManyField(Task, blank=True, null=True)
 
     def __unicode__(self):
         return self.name

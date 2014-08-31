@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from sprints.models import Sprint
 
 
 class Task(models.Model):
@@ -13,6 +14,7 @@ class Task(models.Model):
     description = models.TextField(blank=True)
 
     categories = models.ForeignKey("Category")
+    sprint = models.ForeignKey(Sprint, blank=True, null=True, related_name='tasks')
 
     completed = models.BooleanField(default=False)
 
@@ -23,6 +25,12 @@ class Task(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def is_backlog(self):
+        if not self.sprint:
+            return True
+        else:
+            return False
 
 
 class Category(models.Model):
@@ -35,3 +43,6 @@ class Category(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_open_tasks(self):
+        return self.task_set.filter(completed=False)

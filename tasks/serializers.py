@@ -4,6 +4,8 @@ from tasks.models import Task, Category
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
     account = serializers.Field(source='account.username')
+    sprint = serializers.Field(source='sprint')
+    backlog = serializers.BooleanField(source='is_backlog')
 
     class Meta:
         model = Task
@@ -11,9 +13,11 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'account',
             'title',
+            'sprint',
             'description',
             'categories',
             'completed',
+            'backlog',
             'weight',
             'date_closed',
         )

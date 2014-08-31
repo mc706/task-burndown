@@ -9,7 +9,6 @@ class TaskViewSet(viewsets.ModelViewSet):
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions.
 
-    Additionally we also provide an extra `highlight` action.
     """
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
@@ -20,9 +19,15 @@ class TaskViewSet(viewsets.ModelViewSet):
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+
+    """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly)
+
 
     def pre_save(self, obj):
         obj.account = self.request.user
