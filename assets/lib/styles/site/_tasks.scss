@@ -2,9 +2,22 @@ div.task-view {
   material-content {
     background-color: white;
 
-    material-toobar {
-     padding:5px 15px;
+    material-toolbar {
+      padding: 0 15px;
 
     }
+    material-list {
+      material-list-item {
+        .material-tile-content {
+          padding-left: 15px;
+        }
+      }
+    }
   }
+  form {
+    input {
+      width: 100%;
+    }
+  }
+
 }

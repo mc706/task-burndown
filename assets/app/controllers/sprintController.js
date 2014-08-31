@@ -1,4 +1,4 @@
-app.controller("TaskController", function ($scope, $log, tasks, categories, sprints) {
+app.controller("SprintController", function ($scope, $log, tasks, categories, sprints) {
     'use strict';
     $log.debug('Task Controller Loaded');
     $scope.tasks = tasks;

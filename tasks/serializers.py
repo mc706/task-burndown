@@ -5,7 +5,7 @@ from tasks.models import Task, Category
 class TaskSerializer(serializers.ModelSerializer):
     account = serializers.Field(source='account.username')
     #sprint = serializers.RelatedField(source='sprint')
-    backlog = serializers.BooleanField(source='is_backlog')
+    backlog = serializers.BooleanField(source='is_backlog', read_only=True)
 
     class Meta:
         model = Task

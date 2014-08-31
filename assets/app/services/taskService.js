@@ -31,7 +31,7 @@ app.service('TaskService', function ($http, $q, $rootScope) {
                 method: 'POST',
                 url: '/api/tasks/',
                 headers: {'Content-Type': 'application/json'},
-                data: $.param(data)
+                data: data
             }).success(function (data, status, headers, config) {
                 defer.resolve(data);
             }).error(function (data, status, headers, config) {
@@ -45,7 +45,7 @@ app.service('TaskService', function ($http, $q, $rootScope) {
                 method: 'PUT',
                 url: '/api/tasks/' + slug + '/',
                 headers: {'Content-Type': 'application/json'},
-                data: $.param(data)
+                data: data
             }).success(function (data, status, headers, config) {
                 defer.resolve(data);
             }).error(function (data, status, headers, config) {

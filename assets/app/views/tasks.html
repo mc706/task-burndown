@@ -4,19 +4,93 @@
             <material-toolbar id="new_task_toolbar" class="material-toolbar material-theme-light">
                 <h4>Add New Task</h4>
             </material-toolbar>
-            <material-content>
-                <form name="NewTaskForm" ng-submit="newTask()" novalidate>
+            <material-content class="material-content-padding" layout="vertical">
+                <form name="NewTaskForm" ng-submit="submitNewTask(NewTaskForm.$valid)" novalidate>
                     <material-input-group>
                         <label for="title">Title</label>
-                        <material-input class="material-input" type="text" name="title"></material-input>
+                        <material-input class="material-input" type="text" name="title" required
+                                        ng-model="newTask.title"></material-input>
+                        <p class="error" ng-show="NewTaskForm.title.$invalid && (!NewTaskForm.title.$pristine || submitted)">A Title is required</p>
+                    </material-input-group>
+                    <material-input-group>
+                        <label for="description">Description</label>
+                        <material-input class="material-input" type="text" name="description"
+                                        ng-model="newTask.description"></material-input>
+
+                    </material-input-group>
+                    <material-input-group>
+                        <label for="category">Category</label><br><br>
+                        <select id=category name=category ng-options="category.id as category.name for category in categories"
+                                ng-model="newTask.category" flex required></select>
+                        <p class="error" ng-show="NewTaskForm.category.$invalid && (!NewTaskForm.category.$pristine || submitted)">A Category is required</p>
+                    </material-input-group>
+                    <material-input-group>
+                        <label for="weight">Task Weight</label>
+                        <material-slider>
+                            <input type="range" ng-model="newTask.weight" id=weight min="1" max="13" step="1" required>
+                        </material-slider>
+                        <p class="error" ng-show="NewTaskForm.weight.$invalid && (!NewTaskForm.weight.$pristine || submitted)">A Weight is required</p>
+                    </material-input-group>
+                    <br>
+                    <material-input-group layout="horizontal">
+                        <div flex></div>
+                        <material-button class="material-button-raised material-button-colored" type="submit">
+                            Submit
+                        </material-button>
                     </material-input-group>
                 </form>
+            </material-content>
+        </material-content>
+        <br>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar id="current_sprint_toolbar" class="material-toolbar material-theme-light">
+                <h4>Current Sprint</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding" layout="vertical">
+                <material-list>
+                    <material-list-item ng-repeat="task in tasks | filter:{'sprint':true}" layout="horizontal"
+                                        ng-click="viewTask(task)">
+                        <div class="material-tile-left" layout=vertical layout-align="center center">
+                            <span>{{ task.category_name }}</span>
+                        </div>
+                        <div class="material-tile-content">
+                            <h2>{{ task.title }}</h2>
+
+                            <h3>{{ task.weight }}</h3>
+
+                            <p>
+                                {{ task.description }}
+                            </p>
+                        </div>
+                    </material-list-item>
+                </material-list>
             </material-content>
         </material-content>
     </div>
     <div flex>
         <material-content class="material-whiteframe-z1 content-right">
-            other stuff
+            <material-toolbar scroll-shrink class="material-theme-light material-toolbar">
+                <h4>Backlog</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <material-list>
+                    <material-list-item ng-repeat="task in tasks | filter:{'backlog':true}" layout="horizontal"
+                                        ng-click="viewTask(task)">
+                        <div class="material-tile-left" layout=vertical layout-align="center center">
+                            <span>{{ task.category_name }}</span>
+                        </div>
+                        <div class="material-tile-content">
+                            <h2>{{ task.title }}</h2>
+
+                            <h3>{{ task.weight }}</h3>
+
+                            <p>
+                                {{ task.description }}
+                            </p>
+                        </div>
+                    </material-list-item>
+                </material-list>
+            </material-content>
         </material-content>
     </div>
 
