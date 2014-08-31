@@ -7,7 +7,7 @@ class SprintSerializer(serializers.HyperlinkedModelSerializer):
     sprint_total = serializers.Field(source='get_sprint_total')
     active_total = serializers.Field(source='get_active_total')
     burndown = serializers.Field(source='get_burndown')
-    tasks = TaskSerializer(many=True)
+    tasks = TaskSerializer(many=True, read_only=True)
 
     class Meta:
         model = Sprint
