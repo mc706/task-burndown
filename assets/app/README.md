@@ -18,3 +18,8 @@ houses all of the views
 * Files are named using camelCase. 
 * The actual directives are int TitleCase.
 * All Javascript must be JSLinted
+
+##Debug
+Do *NOT* user ```console.log```, instead use angular's ```$log``` provider.
+
+If you put the url params ```?debug=1&password=Rowing1``` on the end of the url, it will enabled all the logging statements.
