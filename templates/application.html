@@ -1,0 +1,26 @@
+{% verbatim %}
+<div ng-app="task-burndown" class="app-root">
+    <div ng-contoller="GlobalController" layout="horizontal">
+        <material-sidenav layout="vertical" class="material-sidenav-left material-whiteframe-z3" component-id="left">
+            <material-toolbar class="material-theme-light material-medium-tall">
+                <h1 class="material-toolbar-tools" style="padding-top:25px;">
+                    <a href="#" ng-click="goHome()">Task<br>Burndown</a>
+                </h1>
+            </material-toolbar>
+            <material-content flex>
+                <!--sidebar -->
+                <!--/sidebar-->
+            </material-content>
+        </material-sidenav>
+        <div layout="vertical" layout-fill>
+            <material-toolbar class="material-theme-dark material-medium-tall">
+                <!--page header-->
+                <!--/page header-->
+            </material-toolbar>
+            <div class="material-content" ng-view></div>
+        </div>
+
+
+    </div>
+</div>
+{% endverbatim %}
