@@ -1,7 +1,9 @@
-app.controller("GlobalController", function ($scope, $location) {
+app.controller("GlobalController", function ($scope, $location, $log) {
     'use strict';
-    $scope.go_home = function () {
+    $log.log("Global Controller Initalized");
+    $scope.goHome = function () {
         $location.path('/');
+        $log.log('Home Button Pressed in Global Controller');
     };
 
 });
