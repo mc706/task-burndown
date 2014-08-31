@@ -1,11 +1,11 @@
 import json
 from django.shortcuts import render_to_response, redirect, RequestContext, HttpResponse
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import logout
 
-@csrf_exempt
+
 def login_user(request):
     if request.user.is_authenticated():
         return redirect(reverse('home'))
@@ -30,7 +30,11 @@ def login_user(request):
     return render_to_response("login.html", {'errors': errors}, RequestContext(request))
 
 
-@csrf_exempt
+def logout_user(request):
+    logout(request)
+    return redirect(reverse('login'))
+
+
 def register(request):
     if request.user.is_authenticated():
         return redirect(reverse('home'))
@@ -61,3 +65,7 @@ def register(request):
             resp = {"login":False, "errors":errors}
             return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
     return render_to_response("register.html", {'errors': errors}, RequestContext(request))
+
+
+def home(request):
+    return render_to_response('home.html', {}, RequestContext(request))
