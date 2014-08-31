@@ -2,9 +2,9 @@ from rest_framework import serializers
 from tasks.models import Task, Category
 
 
-class TaskSerializer(serializers.HyperlinkedModelSerializer):
+class TaskSerializer(serializers.ModelSerializer):
     account = serializers.Field(source='account.username')
-    sprint = serializers.Field(source='sprint')
+    #sprint = serializers.RelatedField(source='sprint')
     backlog = serializers.BooleanField(source='is_backlog')
 
     class Meta:
@@ -15,7 +15,7 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'sprint',
             'description',
-            'categories',
+            'category',
             'completed',
             'backlog',
             'weight',
@@ -25,6 +25,7 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     account = serializers.Field(source='account.username')
+    tasks = TaskSerializer(many=True)
 
     class Meta:
         model = Category
@@ -32,4 +33,5 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'account',
             'name',
+            'tasks',
         )

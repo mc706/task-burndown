@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from sprints.models import Sprint
-
+from tasks.serializers import TaskSerializer
 
 class SprintSerializer(serializers.HyperlinkedModelSerializer):
     account = serializers.Field(source='account.username')
     sprint_total = serializers.Field(source='get_sprint_total')
     active_total = serializers.Field(source='get_active_total')
     burndown = serializers.Field(source='get_burndown')
-    tasks = serializers.RelatedField(many=True)
+    tasks = TaskSerializer(many=True)
 
     class Meta:
         model = Sprint

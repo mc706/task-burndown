@@ -32,15 +32,11 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: '/static/app/views/home.html',
             resolve: {
                 tasks: function (TaskService) {
-                    //return TaskService.listTasks();
-                    return false;
+                    return TaskService.listTasks();
                 },
                 sprints: function (SprintService) {
-                    //return SprintService.listSprints();
-                    return false;
+                    return SprintService.listSprints();
                 }
             }
-        }).when('/logout', function () {
-            window.location.replace();
         }).otherwise({redirectTo: '/'});
 });

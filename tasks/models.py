@@ -13,7 +13,7 @@ class Task(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
 
-    categories = models.ForeignKey("Category")
+    category = models.ForeignKey("Category", related_name='tasks')
     sprint = models.ForeignKey(Sprint, blank=True, null=True, related_name='tasks')
 
     completed = models.BooleanField(default=False)
