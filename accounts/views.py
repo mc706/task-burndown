@@ -11,22 +11,18 @@ def login_user(request):
         return redirect(reverse('home'))
     errors = []
     if request.method == "POST":
-        post = json.loads(request.body.decode('utf-8'))
+        post = request.POST
         username = post['username']
         password = post['password']
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponse(status=200, content_type='application/json', content='{"login":true, "errors":[]}')
+                return redirect(reverse('home'))
             else:
                 errors.append({'message': "Your account has been disabled"})
-                resp = {"login": False, "errors": errors}
-                return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
         else:
             errors.append({'message': "The username and password you have entered do not match our records"})
-            resp = {"login": False, "errors": errors}
-            return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
     return render_to_response("login.html", {'errors': errors}, RequestContext(request))
 
 
@@ -40,7 +36,7 @@ def register(request):
         return redirect(reverse('home'))
     errors = []
     if request.method == "POST":
-        post = json.loads(request.body.decode('utf-8'))
+        post = request.POST
         username = post['username']
         password = post['password']
         confirm = post['confirm']
