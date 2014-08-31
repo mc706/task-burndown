@@ -1,3 +1,7 @@
 from django.contrib import admin
+from sprints.models import Sprint
 
-# Register your models here.
+
+@admin.register(Sprint)
+class SprintAdmin(admin.ModelAdmin):
+    pass
