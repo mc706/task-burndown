@@ -4706,6 +4706,9 @@ body {
 .error {
   color: red; }
 
+[ng-click] {
+  cursor: pointer; }
+
 .login-page {
   height: 100%; }
   .login-page material-toolbar {
