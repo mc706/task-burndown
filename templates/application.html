@@ -1,7 +1,7 @@
 {% verbatim %}
 <div ng-app="task-burndown" class="app-root">
     <div ng-contoller="GlobalController" layout="horizontal">
-        <material-sidenav layout="vertical" class="material-sidenav-left material-whiteframe-z3" component-id="left">
+        <material-sidenav layout="vertical" class="material-sidenav-left material-whiteframe-z3" id="left">
             <material-toolbar class="material-theme-light material-medium-tall">
                 <h1 class="material-toolbar-tools" style="padding-top:25px;">
                     <a href="#" ng-click="goHome()">Task<br>Burndown</a>
@@ -9,18 +9,32 @@
             </material-toolbar>
             <material-content flex>
                 <!--sidebar -->
+
                 <!--/sidebar-->
             </material-content>
         </material-sidenav>
         <div layout="vertical" layout-fill>
             <material-toolbar class="material-theme-dark material-medium-tall">
                 <!--page header-->
+                <div class="material-toolbar-tools" ng-click="toggleMenu()">
+                    <div class="menu-icon" hide-md>
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    <h2 hide="" block-sm="" class="ng-binding">
+                        API
+                    </h2>
+                </div>
+                <div class="material-toolbar-tools">
+                    <span flex></span>
+                    <material-button ng-href="/logout/">
+                        Logout
+                    </material-button>
+                </div>
                 <!--/page header-->
             </material-toolbar>
+
             <div class="material-content" ng-view></div>
         </div>
-
-
     </div>
 </div>
 {% endverbatim %}
