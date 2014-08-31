@@ -1,3 +1,5 @@
-/**
- * Created by Ryan.McDevitt on 8/30/14.
- */
+app.controller("HomeController", function ($scope, tasks, sprints) {
+    'use strict';
+    $scope.tasks = tasks;
+    $scope.sprints = sprints;
+});
