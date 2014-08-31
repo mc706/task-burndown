@@ -1,4 +1,4 @@
-app.controller("TaskController", function ($scope, $log, $filter, $location, TaskService, tasks, categories, sprints) {
+app.controller("TaskController", function ($scope, $log, $filter, $location, TaskService, tasks, categories, sprints, task) {
     'use strict';
     $log.debug('Sprint Controller Loaded');
     //Initialization
@@ -19,6 +19,13 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
     $scope.sprints = sprints;
     $log.debug('Sprints:', $scope.sprints);
     $scope.submitted = false;
+    if (task) {
+        $log.debug("individual task selected:", task);
+        $scope.task = task;
+        $scope.task.category_name = $filter('filter')(categories, function (l) {
+            return l.id === $scope.task.category;
+        })[0].name;
+    }
 
 
     //helper functions

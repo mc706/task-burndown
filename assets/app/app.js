@@ -54,6 +54,27 @@ app.config(function ($routeProvider, $locationProvider) {
                 },
                 sprints: function (SprintService) {
                     return SprintService.listSprints();
+                },
+                task: function () {
+                    return false;
+                }
+            }
+        }).when('/tasks/:taskid',
+        {
+            controller: 'TaskController',
+            templateUrl: '/static/app/views/task.html',
+            resolve: {
+                tasks: function (TaskService) {
+                    return TaskService.listTasks();
+                },
+                categories: function (CategoryService) {
+                    return CategoryService.listCategories();
+                },
+                sprints: function (SprintService) {
+                    return SprintService.listSprints();
+                },
+                task: function (TaskService, $route) {
+                    return TaskService.getTask($route.current.params.taskid);
                 }
             }
         }).when('/sprints/',
