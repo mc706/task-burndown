@@ -1,13 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from rest_framework import routers
-from accounts.serializers import UserViewSet
-
-
-# Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'users', UserViewSet)
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = patterns('',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -19,3 +13,5 @@ urlpatterns = patterns('',
     url(r'^register/', 'accounts.views.register', name='register'),
     url(r'^$', 'accounts.views.home', name='home'),
 )
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
