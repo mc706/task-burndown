@@ -26,8 +26,8 @@ class Sprint(models.Model):
         return sum({task.weight for task in self.tasks.all() if not task.completed})
 
     def get_burndown(self):
-        #TODO: Burndown chart calculation
-        pass
+        return []
 
     class Meta:
-        order = ('date_start',)
+        get_latest_by = 'date_start'
+        ordering = ['date_start']

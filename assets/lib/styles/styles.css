@@ -4709,6 +4709,10 @@ body {
 [ng-click] {
   cursor: pointer; }
 
+material-sidenav material-content material-button.menu-item {
+  width: 100%;
+  padding: 15px; }
+
 .login-page {
   height: 100%; }
   .login-page material-toolbar {

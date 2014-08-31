@@ -1,3 +1,28 @@
-from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from tasks.models import Task, Category
+from tasks.serializers import TaskSerializer, CategorySerializer
+from task_burndown.permissions import IsOwnerOrReadOnly
 
-# Create your views here.
+
+class TaskViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+
+    Additionally we also provide an extra `highlight` action.
+    """
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly,)
+
+    def pre_save(self, obj):
+        obj.account = self.request.user
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly)
+
+    def pre_save(self, obj):
+        obj.account = self.request.user

@@ -3,6 +3,7 @@ app.controller("GlobalController", function ($scope, $location, $log, $materialS
     $log.debug("Global Controller Initalized");
     $scope.goHome = function () {
         $log.debug('Home Button Pressed in Global Controller');
+        $location.path('/');
     };
 
     $scope.toggleMenu = function () {
