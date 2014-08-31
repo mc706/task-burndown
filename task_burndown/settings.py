@@ -43,6 +43,8 @@ INSTALLED_APPS = (
 
     #apps
     'tasks',
+    'sprints',
+    'accounts',
 
 )
 
