@@ -34,6 +34,9 @@ app.config(function ($routeProvider, $locationProvider) {
                 tasks: function (TaskService) {
                     return TaskService.listTasks();
                 },
+                categories: function (CategoryService) {
+                    return CategoryService.listCategories();
+                },
                 sprints: function (SprintService) {
                     return SprintService.listSprints();
                 }
