@@ -4,6 +4,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    {% block base %}{% endblock base %}
     <title>Task Burndown - {% block title %}{% endblock title %}</title>
     <link rel="stylesheet" type="text/css" href="{% static "lib/styles/styles.css" %}">
     {% block styles %}{% endblock styles %}
@@ -14,6 +15,7 @@
 {% block bottom-content %}
 {% endblock bottom-content %}
 <!--scripts-->
+<script src="{% static "lib/scripts/vendor/md5.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular-animate.js" %}"></script>
 <script src="{% static "lib/scripts/vendor/angular-cookies.js" %}"></script>
