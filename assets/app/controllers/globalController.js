@@ -1,9 +1,20 @@
-app.controller("GlobalController", function ($scope, $location, $log) {
+app.controller("GlobalController", function ($scope, $location, $log, $materialSidenav) {
     'use strict';
-    $log.log("Global Controller Initalized");
+    $log.debug("Global Controller Initalized");
     $scope.goHome = function () {
-        $location.path('/');
-        $log.log('Home Button Pressed in Global Controller');
+        $log.debug('Home Button Pressed in Global Controller');
+    };
+
+    $scope.toggleMenu = function () {
+        $materialSidenav('left').toggle();
+        $log.debug("Side Menu Toggled");
+
+    };
+
+    $scope.test = "Home";
+
+    $scope.go = function (url) {
+        $location.path(url);
     };
 
 });
