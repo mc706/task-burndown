@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -24,7 +25,12 @@ class Sprint(models.Model):
         return sum({task.weight for task in self.tasks.all() if not task.completed})
 
     def get_burndown(self):
-        return []
+        burndown = [self.get_sprint_total()]
+        days = (self.date_start + datetime.timedelta(n) for n in range((self.date_finish - self.date_start).days))
+        for day in days:
+            tasks = self.tasks.filter(completed=True)
+            burndown.append(burndown[-1] - sum([task.weight for task in tasks if task.date_closed.date()==day]))
+        return burndown
 
     class Meta:
         get_latest_by = 'date_start'

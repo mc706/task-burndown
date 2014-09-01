@@ -31,4 +31,36 @@ app.controller("SprintController", function ($scope, $log, $location, SprintServ
         }
     };
 
+    $scope.initializeLocalChart = function (sprint) {
+        return {
+            options: {
+                chart: {
+                    type: 'line'
+                },
+                tooltip: {
+                    style: {
+                        padding: 10,
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            series: [
+                {
+                    data: sprint.burndown
+                }
+            ],
+            title: {
+                text: sprint.name
+            },
+            loading: false,
+            size: {
+                width: 400,
+                height: 300
+            }
+        };
+    };
+    angular.forEach($scope.sprints, function (sprint, i) {
+        $scope.sprints[i].config = $scope.initializeLocalChart(sprint);
+    });
+
 });
