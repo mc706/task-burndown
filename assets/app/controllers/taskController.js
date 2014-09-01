@@ -42,7 +42,7 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
                 $scope.tasks.push(data);
                 $scope.initializeTasks();
                 $scope.newTask = {};
-                $scope.NewTaskForm.$pristine = true;
+                $scope.NewTaskForm.$setPristine();
                 $scope.submitted = false;
             });
         } else {

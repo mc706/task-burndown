@@ -23,7 +23,7 @@ app.controller("SprintController", function ($scope, $log, $location, SprintServ
             SprintService.createSprint($scope.newSprint).then(function (data) {
                 $scope.sprints.push(data);
                 $scope.newSprint = {};
-                $scope.NewSprintForm.$pristine = true;
+                $scope.NewSprintForm.$setPristine();
                 $scope.submitted = false;
             });
         } else {
@@ -35,7 +35,7 @@ app.controller("SprintController", function ($scope, $log, $location, SprintServ
         return {
             options: {
                 chart: {
-                    type: 'line'
+                    type: 'areaspline'
                 },
                 tooltip: {
                     style: {

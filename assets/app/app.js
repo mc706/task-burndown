@@ -90,6 +90,27 @@ app.config(function ($routeProvider, $locationProvider) {
                 },
                 sprints: function (SprintService) {
                     return SprintService.listSprints();
+                },
+                sprint: function () {
+                    return false;
+                }
+            }
+        }).when('/sprints/:sprintid',
+        {
+            controller: 'SprintController',
+            templateUrl: '/static/app/views/sprint.html',
+            resolve: {
+                tasks: function (TaskService) {
+                    return TaskService.listTasks();
+                },
+                categories: function (CategoryService) {
+                    return CategoryService.listCategories();
+                },
+                sprints: function (SprintService) {
+                    return SprintService.listSprints();
+                },
+                sprint: function (SprintService, $route) {
+                    return SprintService.getSprint($route.current.params.sprintid);
                 }
             }
         }).when('/categories/',

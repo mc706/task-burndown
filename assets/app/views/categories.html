@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="categories-view" layout="vertical" layout-sm="horizontal" layout-md="horizontal" layout-lg="horizontal"
+     layout-padding>
+    <div flex>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>New Category</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding" layout="vertical">
+                <form name="NewCategoryForm" ng-submit="submitNewCategory(NewCategoryForm.$valid)" novalidate>
+                    <material-input-group>
+                        <label for="name">Name</label>
+                        <material-input class="material-input" type="text" name="name" required
+                                        ng-model="newCategory.name"></material-input>
+                        <p class="error"
+                           ng-show="NewCategoryForm.name.$invalid && (!NewCategoryForm.name.$pristine || submitted)">
+                            A name is required
+                        </p>
+                    </material-input-group>
+                    <material-input-group layout="horizontal">
+                        <div flex></div>
+                        <material-button class="material-button-raised material-button-colored" type="submit">
+                            Submit
+                        </material-button>
+                    </material-input-group>
+                </form>
+            </material-content>
+        </material-content>
+    </div>
+    <div flex>
+        <material-content class="material-whiteframe-z1 content-right">
+            <material-toolbar scroll-shrink class="material-theme-light material-toolbar">
+                <h4>Categories</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <material-card ng-repeat="category in categories">
+                    <h5>{{ category.name }} <small>({{ category.tasks.length }})</small></h5>
+                </material-card>
+            </material-content>
+        </material-content>
+    </div>
 
-</body>
-</html>
+</div>

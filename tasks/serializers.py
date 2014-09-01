@@ -25,7 +25,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     account = serializers.Field(source='account.username')
-    tasks = TaskSerializer(many=True)
+    tasks = TaskSerializer(many=True, read_only=True)
 
     class Meta:
         model = Category
