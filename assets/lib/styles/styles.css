@@ -4750,3 +4750,12 @@ div.task-view material-content {
     padding-left: 15px; }
 div.task-view form input {
   width: 100%; }
+
+div.sprints-view material-content {
+  background-color: white; }
+  div.sprints-view material-content material-toolbar {
+    padding: 0 15px; }
+  div.sprints-view material-content material-list material-list-item .material-tile-content {
+    padding-left: 15px; }
+div.sprints-view form input {
+  width: 100%; }

@@ -27,12 +27,10 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
         })[0].name;
     }
 
-
     //helper functions
     $scope.viewTask = function (task) {
         $location.path('/tasks/' + task.id);
     };
-
 
     //form validation and submission
     $scope.submitNewTask = function (isValid) {
