@@ -4751,13 +4751,22 @@ div.task-view material-content {
 div.task-view form input {
   width: 100%; }
 
-div.sprints-view material-content {
+div.sprints-view material-content, div.sprint-view material-content {
   background-color: white; }
-  div.sprints-view material-content material-toolbar {
+  div.sprints-view material-content material-toolbar, div.sprint-view material-content material-toolbar {
     padding: 0 15px; }
-  div.sprints-view material-content material-list material-list-item .material-tile-content {
+  div.sprints-view material-content material-list material-list-item .material-tile-content, div.sprint-view material-content material-list material-list-item .material-tile-content {
     padding-left: 15px; }
-div.sprints-view form input {
+div.sprints-view form input, div.sprint-view form input {
+  width: 100%; }
+
+div.categories-view material-content {
+  background-color: white; }
+  div.categories-view material-content material-toolbar {
+    padding: 0 15px; }
+  div.categories-view material-content material-list material-list-item .material-tile-content {
+    padding-left: 15px; }
+div.categories-view form input {
   width: 100%; }
 
 div.home-view material-content {

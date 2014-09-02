@@ -25,6 +25,15 @@
                 </form>
             </material-content>
         </material-content>
+        <br>
+        <material-content class="material-whiteframe-z1 content-right">
+            <material-toolbar scroll-shrink class="material-theme-light material-toolbar">
+                <h4>Breakdown</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="categoryPieChart" config="categoryPieConfig"></highchart>
+            </material-content>
+        </material-content>
     </div>
     <div flex>
         <material-content class="material-whiteframe-z1 content-right">
@@ -33,7 +42,9 @@
             </material-toolbar>
             <material-content class="material-content-padding">
                 <material-card ng-repeat="category in categories">
-                    <h5>{{ category.name }} <small>({{ category.tasks.length }})</small></h5>
+                    <h5>{{ category.name }}
+                        <small>({{ category.tasks.length }})</small>
+                    </h5>
                 </material-card>
             </material-content>
         </material-content>

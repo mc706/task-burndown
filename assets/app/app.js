@@ -39,6 +39,9 @@ app.config(function ($routeProvider, $locationProvider) {
                 },
                 sprints: function (SprintService) {
                     return SprintService.listSprints();
+                },
+                current: function (SprintService) {
+                    var sprints = SprintService.listSprints()
                 }
             }
         }).when('/tasks/',

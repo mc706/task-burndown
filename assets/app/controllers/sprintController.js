@@ -51,11 +51,6 @@ app.controller("SprintController", function ($scope, $log, $location, SprintServ
             ],
             title: {
                 text: sprint.name
-            },
-            loading: false,
-            size: {
-                width: 400,
-                height: 300
             }
         };
     };

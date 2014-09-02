@@ -8,9 +8,9 @@ app.controller("CategoryController", function ($scope, $log, tasks, CategoryServ
     $log.debug('Categories:', $scope.categories);
     $scope.sprints = sprints;
     $log.debug('Sprints:', $scope.sprints);
-    
+
     //helper funcitons
-    
+
     //form validation and submission
     $scope.submitNewCategory = function (isValid) {
         $log.debug('newCategory Called');
@@ -27,6 +27,30 @@ app.controller("CategoryController", function ($scope, $log, tasks, CategoryServ
             $log.debug('Form Submission Invalid');
         }
     };
+
+
+    $scope.pieData = [];
+    angular.forEach($scope.categories, function (c) {
+        $scope.pieData.push([c.name, c.tasks.length]);
+    });
+    $log.debug('chartData:', $scope.pieData);
+    //highcharts config
+    $scope.categoryPieConfig = {
+        options: {
+            chart: {
+                type: 'pie'
+            }
+        },
+        series: [
+            {
+                data: $scope.pieData
+            }
+        ],
+        title: {
+            text: 'Category Breakdown'
+        }
+    };
+    $log.debug('categoryPieConfig: ', $scope.categoryPieConfig);
 
 
 });
