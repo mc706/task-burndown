@@ -1,3 +1,4 @@
+from datetime import datetime
 from rest_framework import viewsets, permissions
 from tasks.models import Task, Category
 from tasks.serializers import TaskSerializer, CategorySerializer
@@ -15,6 +16,10 @@ class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly,)
 
     def pre_save(self, obj):
+        if obj.completed and not obj.date_closed:
+            obj.date_closed = datetime.now()
+        if not obj.completed and obj.date_closed:
+            obj.date_closed = None
         obj.account = self.request.user
 
 
@@ -27,7 +32,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly)
-
 
     def pre_save(self, obj):
         obj.account = self.request.user

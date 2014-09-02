@@ -6,6 +6,7 @@ class TaskSerializer(serializers.ModelSerializer):
     account = serializers.Field(source='account.username')
     #sprint = serializers.RelatedField(source='sprint')
     backlog = serializers.BooleanField(source='is_backlog', read_only=True)
+    date_closed = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Task

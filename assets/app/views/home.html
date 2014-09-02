@@ -7,9 +7,9 @@
             </material-toolbar>
             <material-content class="material-content-padding">
                 <material-list>
-                    <material-list-item ng-repeat="task in currentSprint">
+                    <material-list-item ng-repeat="task in sprint.tasks" layout="horizontal">
                         <div class="material-tile-left" layout=vertical layout-align="center center">
-                            <material-checkbox ng-model="task.completed"></material-checkbox>
+                            <material-checkbox ng-model="task.completed" ng-change="updateTask(task)"></material-checkbox>
                         </div>
                         <div class="material-tile-content">
                             <h2>{{ task.title }}</h2>
@@ -26,5 +26,14 @@
         </material-content>
 
     </div>
-    <div flex></div>
+    <div flex>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Burndown</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="category_breakdown" config="sprint.burndown"></highchart>
+            </material-content>
+        </material-content>
+    </div>
 </div>
