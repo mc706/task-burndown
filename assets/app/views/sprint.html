@@ -3,28 +3,68 @@
     <div flex>
         <material-content class="material-whiteframe-z1">
             <material-toolbar class="material-toolbar material-theme-light">
-                <h4></h4>
+                <h4>Backlog</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
+                <material-list>
+                    <material-list-item ng-repeat="task in tasks | filter:{'backlog':true}" layout="horizontal">
+                        <div class="material-tile-left" layout="vertical" layout-align="center center">
+                            <i class="fa fa2x fa-plus" title="Add Task to Sprint" ng-click="addTask(task)"></i>
+                        </div>
+                        <div class="material-tile-content">
+                            <h2>{{ task.title }}</h2>
 
+                            <h3>{{ task.weight }}</h3>
+
+                            <p>
+                                {{ task.description }}
+                            </p>
+                        </div>
+                    </material-list-item>
+                </material-list>
+            </material-content>
+        </material-content>
+        <br>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Category Breakdown</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="category_breakdown" config="sprint.categoryConfig"></highchart>
             </material-content>
         </material-content>
     </div>
     <div flex>
         <material-content class="material-whiteframe-z1">
             <material-toolbar class="material-toolbar material-theme-light">
-                <h4></h4>
+                <h4>Sprint ({{ sprint.sprint_total }})</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
+                <material-list>
+                    <material-list-item ng-repeat="task in sprint.tasks" layout="horizontal">
+                        <div class="material-tile-left" layout="vertical" layout-align="center center">
+                            <i class="fa fa2x fa-minus" title="Add Task to Sprint" ng-click="removeTask($index)"></i>
+                        </div>
+                        <div class="material-tile-content">
+                            <h2>{{ task.title }}</h2>
 
+                            <h3>{{ task.weight }}</h3>
+
+                            <p>
+                                {{ task.description }}
+                            </p>
+                        </div>
+                    </material-list-item>
+                </material-list>
             </material-content>
         </material-content>
+        <br>
         <material-content class="material-whiteframe-z1">
             <material-toolbar class="material-toolbar material-theme-light">
-                <h4></h4>
+                <h4>Burndown</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
-
+                <highchart id="category_breakdown" config="sprint.burndownConfig"></highchart>
             </material-content>
         </material-content>
     </div>

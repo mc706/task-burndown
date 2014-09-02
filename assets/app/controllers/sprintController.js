@@ -1,4 +1,4 @@
-app.controller("SprintController", function ($scope, $log, $location, SprintService, tasks, categories, sprints) {
+app.controller("SprintController", function ($scope, $log, $location, $filter, SprintService, TaskService, tasks, categories, sprints, sprint) {
     'use strict';
     //Initialization
     $log.debug('Sprint Controller Loaded');
@@ -8,6 +8,17 @@ app.controller("SprintController", function ($scope, $log, $location, SprintServ
     $log.debug('Categories:', $scope.categories);
     $scope.sprints = sprints;
     $log.debug('Sprints:', $scope.sprints);
+
+    //setting individual sprint
+    if (sprint) {
+        $log.debug("Sprint Defined - id:", sprint);
+        angular.forEach($scope.sprints, function (s, i) {
+            if (parseInt(sprint, 10) === s.id) {
+                $scope.sprint = $scope.sprints[i];
+            }
+        });
+        $log.debug("Selected Sprint: ", $scope.sprint);
+    }
 
     //helper functions
     $scope.viewSprint = function (sprint) {
@@ -31,7 +42,33 @@ app.controller("SprintController", function ($scope, $log, $location, SprintServ
         }
     };
 
-    $scope.initializeLocalChart = function (sprint) {
+    //add remove tasks to sprint
+    $scope.addTask = function (task) {
+        $log.debug('addTask Called', task);
+        task.sprint = sprint;
+        TaskService.updateTask(task.id, task).then(function (data) {
+            $scope.sprint.tasks.push(data);
+            $scope.sprint.sprint_total += task.weight;
+        });
+    };
+
+    $scope.removeTask = function (index) {
+        var task = $scope.sprint.tasks[index];
+        task.sprint = null;
+        TaskService.updateTask(task.id, task).then(function (data) {
+            angular.forEach($scope.tasks, function (t, i) {
+                if (t.id === task.id) {
+                    $scope.tasks[i].sprint = null;
+                    $scope.tasks[i].backlog = true;
+                }
+            });
+            $scope.sprint.tasks.splice(index, 1);
+            $scope.sprint.sprint_total -= task.weight;
+        });
+    };
+
+    //highcharts configurations
+    $scope.initializeBurndownChart = function (sprint) {
         return {
             options: {
                 chart: {
@@ -50,12 +87,54 @@ app.controller("SprintController", function ($scope, $log, $location, SprintServ
                 }
             ],
             title: {
-                text: sprint.name
+                text: 'Burndown'
+            }
+        };
+    };
+    $scope.initializeCategoryChart = function (sprint) {
+        var categories_breakdown = {},
+            category_data = [],
+            key;
+        angular.forEach(sprint.tasks, function (task) {
+            task.category_name = $filter('filter')(categories, function (l) {
+                return l.id === task.category;
+            })[0].name;
+            categories_breakdown[task.category_name] = categories_breakdown.hasOwnProperty(task.category_name) ? categories_breakdown[task.category_name] + 1 : 1;
+        });
+        for (key in categories_breakdown) {
+            if (categories_breakdown.hasOwnProperty(key)) {
+                category_data.push([key, categories_breakdown[key]]);
+            }
+        }
+        return {
+            options: {
+                chart: {
+                    type: 'pie'
+                },
+                tooltip: {
+                    style: {
+                        padding: 10,
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            series: [
+                {
+                    data: category_data
+                }
+            ],
+            title: {
+                text: 'Sprint Cateogry Breakdown'
             }
         };
     };
     angular.forEach($scope.sprints, function (sprint, i) {
-        $scope.sprints[i].config = $scope.initializeLocalChart(sprint);
+        $log.debug("Adding Chart Configs to sprint");
+        $scope.sprints[i].burndownConfig = $scope.initializeBurndownChart(sprint);
+        $log.debug($scope.sprints[i].name + ' burndown config:', $scope.sprints[i].burndownConfig);
+        $scope.sprints[i].categoryConfig = $scope.initializeCategoryChart(sprint);
+        $log.debug($scope.sprints[i].name + ' category config:', $scope.sprints[i].categoryConfig);
     });
+
 
 });

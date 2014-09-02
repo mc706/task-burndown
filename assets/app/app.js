@@ -113,7 +113,7 @@ app.config(function ($routeProvider, $locationProvider) {
                     return SprintService.listSprints();
                 },
                 sprint: function (SprintService, $route) {
-                    return SprintService.getSprint($route.current.params.sprintid);
+                    return $route.current.params.sprintid;
                 }
             }
         }).when('/categories/',
