@@ -14,7 +14,6 @@ class Sprint(models.Model):
     name = models.CharField(max_length=100, blank=True, help_text="Sprint Name")
     date_start = models.DateField()
     date_finish = models.DateField()
-    active = models.BooleanField(default=False)
 
 
     def __unicode__(self):
@@ -33,6 +32,10 @@ class Sprint(models.Model):
             tasks = self.tasks.filter(completed=True)
             burndown.append(burndown[-1] - sum([task.weight for task in tasks if task.date_closed.date()==day]))
         return burndown
+
+    def is_active(self):
+        now = datetime.datetime.now()
+        return datetime.datetime.combine(self.date_start, datetime.datetime.min.time()) < now < datetime.datetime.combine(self.date_finish, datetime.datetime.min.time())
 
     class Meta:
         get_latest_by = 'date_start'

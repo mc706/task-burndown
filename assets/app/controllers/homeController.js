@@ -7,6 +7,7 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
     $log.debug('Categories:', $scope.categories);
     $scope.sprints = sprints;
     $log.debug('Sprints:', $scope.sprints);
+    $scope.noSprint = false;
 
     //setting active sprint
     angular.forEach($scope.sprints, function (s, i) {
@@ -15,17 +16,9 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
         }
     });
     $log.debug("Active Sprint: ", $scope.sprint);
-    if (!$scope.sprint && $scope.sprints > 0) {
-        $log.debug('No Active Sprint set, settings most recent sprint to active', $scope.sprints[-1]);
-        var sprint = $scope.sprints[-1];
-        SprintService.updateSprint(sprint.id, sprint).then(function (data) {
-            $scope.sprint = data;
-            $log.debug('Active Sprint Set to ', $scope.sprint);
-        });
-    }
-    if (!$scope.sprint && $scope.sprints === 0) {
+    if (!$scope.sprint) {
         $scope.noSprint = true;
-        $log.debug("No Sprints Exist Yet");
+        $log.debug("No Active Sprint Yet");
     }
 
     $scope.updateTask = function (task) {
