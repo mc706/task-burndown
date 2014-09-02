@@ -5,7 +5,8 @@
         <p>
             <b>Category: </b> {{ task.category_name }}<br>
             <b>Sprint: </b> {{ task.sprint_name }}<br>
-            <b>Status: </b> <span ng-show="task.completed">Completed</span><span ng-hide="task.completed">Incomplete</span>
+            <b>Status: </b> <span ng-show="task.completed">Completed</span><span ng-hide="task.completed">Incomplete</span><br>
+            <span ng-show="task.completed"><b>Date Completed:</b> {{ task.date_completed }}</span>
         </p>
         <p>
             {{ task.description }}
