@@ -48,7 +48,7 @@
             </material-toolbar>
             <material-content class="material-content-padding" layout="vertical">
                 <material-list>
-                    <material-list-item ng-repeat="task in tasks | filter:{'sprint':true}" layout="horizontal"
+                    <material-list-item ng-repeat="task in sprint.tasks" layout="horizontal"
                                         ng-click="viewTask(task)">
                         <div class="material-tile-left" layout=vertical layout-align="center center">
                             <span>{{ task.category_name }}</span>

@@ -25,7 +25,16 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
         $scope.task.category_name = $filter('filter')(categories, function (l) {
             return l.id === $scope.task.category;
         })[0].name;
+        $scope.task.sprint_name = $filter('filter')(sprints, function(k) {
+            return k.id === $scope.task.sprint;
+        })[0].name;
     }
+    //initialize active sprint
+    angular.forEach($scope.sprints, function (s, i) {
+        if (s.active) {
+            $scope.sprint = $scope.sprints[i];
+        }
+    });
 
     //helper functions
     $scope.viewTask = function (task) {
