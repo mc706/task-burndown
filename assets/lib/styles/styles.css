@@ -4777,3 +4777,11 @@ div.home-view material-content {
     padding-left: 15px; }
 div.home-view form input {
   width: 100%; }
+
+div.stats-view material-content {
+  background-color: white; }
+  div.stats-view material-content material-toolbar {
+    padding: 0 15px; }
+
+material-toolbar.material-medium-tall .material-toolbar-tools {
+  height: 44px !important; }

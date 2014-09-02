@@ -1,7 +1,7 @@
 <div class="sprint-view" layout="vertical" layout-lg="horiztonal" layout-md="horizontal" layout-sm="horizontal"
      layout-padding>
     <div flex>
-        <material-content class="material-whiteframe-z1">
+        <material-content class="material-whiteframe-z1" ng-if="sprint.active">
             <material-toolbar class="material-toolbar material-theme-light">
                 <h4>Backlog</h4>
             </material-toolbar>
@@ -24,6 +24,14 @@
                 </material-list>
             </material-content>
         </material-content>
+        <material-content class="material-whiteframe-z1" ng-hide="sprint.active">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Burndown</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="category_breakdown" config="sprint.burndownConfig"></highchart>
+            </material-content>
+        </material-content>
         <br>
         <material-content class="material-whiteframe-z1">
             <material-toolbar class="material-toolbar material-theme-light">
@@ -43,7 +51,8 @@
                 <material-list>
                     <material-list-item ng-repeat="task in sprint.tasks" layout="horizontal">
                         <div class="material-tile-left" layout="vertical" layout-align="center center">
-                            <i class="fa fa2x fa-minus" title="Add Task to Sprint" ng-click="removeTask($index)"></i>
+                            <i class="fa fa2x fa-minus" title="Add Task to Sprint" ng-click="removeTask($index)" ng-if="sprint.active"></i>
+                            <material-checkbox disabled ng-model="task.completed" ng-hide="sprint.active"></material-checkbox>
                         </div>
                         <div class="material-tile-content">
                             <h2>{{ task.title }}</h2>
@@ -59,7 +68,7 @@
             </material-content>
         </material-content>
         <br>
-        <material-content class="material-whiteframe-z1">
+        <material-content class="material-whiteframe-z1" ng-show="sprint.active">
             <material-toolbar class="material-toolbar material-theme-light">
                 <h4>Burndown</h4>
             </material-toolbar>
