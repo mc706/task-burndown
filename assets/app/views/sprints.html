@@ -50,9 +50,9 @@
                 <h4>Sprints</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
-                <material-card ng-repeat="sprint in sprints | orderBy:'date_finish':true| limitTo:5">
+                <material-card ng-repeat="sprint in sprints | orderBy:'date_finish':true| limitTo:5" ng-click="viewSprint(sprint)">
                     <highchart id="chart_{{ sprint.name }}" class="burndown-chart" config="sprint.config"></highchart>
-                    <h2 ng-click="viewSprint(sprint)">{{ sprint.name }}</h2>
+                    <h2>{{ sprint.name }}</h2>
 
                     <p>{{ sprint.date_start }} - {{ sprint.date_finish }}</p>
                     <material-list>
