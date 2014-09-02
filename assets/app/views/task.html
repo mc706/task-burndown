@@ -4,7 +4,8 @@
         <h2>{{ task.title }}</h2>
         <p>
             <b>Category: </b> {{ task.category_name }}<br>
-            <b>Sprint: </b> {{ task.sprint_name }}<br>
+            <b>Weight: </b> {{ task.weight }}<br>
+            <b>Sprint: </b> <span ng-show="task.sprint_name">{{ task.sprint_name }}</span><span ng-hide="task.sprint_name">Backlog</span><br>
             <b>Status: </b> <span ng-show="task.completed">Completed</span><span ng-hide="task.completed">Incomplete</span><br>
             <span ng-show="task.completed"><b>Date Completed:</b> {{ task.date_completed }}</span>
         </p>
