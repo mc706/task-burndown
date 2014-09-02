@@ -1,1 +1,30 @@
-<h1>This is the home template</h1>
+<div class="home-view" layout="vertical" layout-lg="horizontal" layout-md="horzontal" layout-sm="horizontal"
+     layout-padding>
+    <div flex>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Tasks For Current Sprint</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <material-list>
+                    <material-list-item ng-repeat="task in currentSprint">
+                        <div class="material-tile-left" layout=vertical layout-align="center center">
+                            <material-checkbox ng-model="task.completed"></material-checkbox>
+                        </div>
+                        <div class="material-tile-content">
+                            <h2>{{ task.title }}</h2>
+
+                            <h3>{{ task.weight }}</h3>
+
+                            <p>
+                                {{ task.description }}
+                            </p>
+                        </div>
+                    </material-list-item>
+                </material-list>
+            </material-content>
+        </material-content>
+
+    </div>
+    <div flex></div>
+</div>

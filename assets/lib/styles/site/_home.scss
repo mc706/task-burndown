@@ -1,0 +1,23 @@
+div.home-view {
+  material-content {
+    background-color: white;
+
+    material-toolbar {
+      padding: 0 15px;
+
+    }
+    material-list {
+      material-list-item {
+        .material-tile-content {
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+  form {
+    input {
+      width: 100%;
+    }
+  }
+
+}

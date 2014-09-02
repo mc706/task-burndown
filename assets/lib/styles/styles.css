@@ -4759,3 +4759,12 @@ div.sprints-view material-content {
     padding-left: 15px; }
 div.sprints-view form input {
   width: 100%; }
+
+div.home-view material-content {
+  background-color: white; }
+  div.home-view material-content material-toolbar {
+    padding: 0 15px; }
+  div.home-view material-content material-list material-list-item .material-tile-content {
+    padding-left: 15px; }
+div.home-view form input {
+  width: 100%; }
