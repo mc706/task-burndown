@@ -18,6 +18,7 @@ class SprintSerializer(serializers.HyperlinkedModelSerializer):
             'name',
             'date_start',
             'date_finish',
+            'active',
             'tasks',
             'sprint_total',
             'active_total',

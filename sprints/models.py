@@ -14,6 +14,8 @@ class Sprint(models.Model):
     name = models.CharField(max_length=100, blank=True, help_text="Sprint Name")
     date_start = models.DateField()
     date_finish = models.DateField()
+    active = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return self.name
