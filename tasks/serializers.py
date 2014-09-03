@@ -20,6 +20,7 @@ class TaskSerializer(serializers.ModelSerializer):
             'completed',
             'backlog',
             'weight',
+            'date_added',
             'date_closed',
         )
 

@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="stats-view" layout="vertical" layout-lg="horizontal" layout-md="horizontal" layout-sm="horizontal"
+     layout-padding>
+    <div flex>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Weight Over Time</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="weightTime" config="weightTime"></highchart>
+            </material-content>
+        </material-content>
+        <br>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Categories Over Time</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="categoriesTime" config="categoriesTime"></highchart>
+            </material-content>
+        </material-content>
+    </div>
+    <div flex>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Velocity Over Time</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="velocityTime" config="velocityTime"></highchart>
+            </material-content>
+        </material-content>
+        <br>
+        <material-content class="material-whiteframe-z1">
+            <material-toolbar class="material-toolbar material-theme-light">
+                <h4>Weight Distribution</h4>
+            </material-toolbar>
+            <material-content class="material-content-padding">
+                <highchart id="weightDistribution" config="weightDistribution"></highchart>
+            </material-content>
+        </material-content>
+    </div>
+</div>
