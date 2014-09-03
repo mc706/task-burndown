@@ -36,23 +36,17 @@ app.controller("StatsController", function ($scope, $log, tasks, categories, spr
         angular.forEach($scope.sprints, function (sprint) {
             var sprint_start = new Date(sprint.date_start),
                 sprint_end = new Date(sprint.date_finish);
-            console.log(sprint.name);
             labels.push(sprint.name);
             added_total = 0;
             closed_total = 0;
             angular.forEach($scope.tasks, function (task) {
-                console.log(task.title);
                 var date_added = new Date(task.date_added.split("T")[0]),
                     date_closed = task.date_closed ? new Date(task.date_closed.split("T")[0]) : false;
-                console.log('a', sprint.date_start, task.date_added, sprint.date_finish);
                 if (sprint_start < date_added && date_added <= sprint_end) {
                     added_total += task.weight;
-                    console.log('added', true, added_total);
                 }
-                console.log('c', sprint.date_start, task.date_closed, sprint.date_finish);
                 if (task.date_closed && sprint_start <= date_closed && date_closed <= sprint_end) {
                     closed_total -= task.weight;
-                    console.log('closed', true, closed_total);
                 }
             });
             running_total += (added_total + closed_total);
