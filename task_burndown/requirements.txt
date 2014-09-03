@@ -1,4 +1,4 @@
-Django==1.7c2
+Django==1.7
 Markdown==2.4.1
 MySQL-python==1.2.5
 django-filter==0.7
