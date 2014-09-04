@@ -8,7 +8,7 @@
     <div ng-app="task-burndown" class="register-page">
         <div layout="horizontal" layout-fill layout-align="start center" ng-contoller="LoginController">
             <div class="login-form" flex="50" offset="25">
-                <material-toolbar class="material-theme-light" layout="horizontal">
+                <material-toolbar class="material-theme-orange" layout="horizontal">
                     <h2 layout-align="center">Register</h2>
                 </material-toolbar>
                 <material-content class="material-whiteframe-z4">
@@ -19,24 +19,24 @@
                     {% endif %}
                     <form action="{% url "login" %}" method="post" layout="vertical">
                         {% csrf_token %}
-                        <material-input-group class="material-input-group-theme-light">
+                        <material-input-group class="material-input-group-theme-orange">
                             <label for="username" >Username</label>
                             <material-input class="material-input" type=text name="username" id="username" ></material-input>
                         </material-input-group>
-                        <material-input-group class="material-input-group-theme-light">
+                        <material-input-group class="material-input-group-theme-orange">
                             <label for="email" >Email</label>
                             <material-input class="material-input" type=email name="email" id="email" ></material-input>
                         </material-input-group>
-                        <material-input-group class="material-input-group-theme-light" flex>
+                        <material-input-group class="material-input-group-theme-orange" flex>
                             <label for="password">Password</label>
                             <material-input type="password" name="password" id="password"></material-input>
                         </material-input-group>
-                        <material-input-group class="material-input-group-theme-light" flex>
+                        <material-input-group class="material-input-group-theme-orange" flex>
                             <label for="confirm">Confirm Password</label>
                             <material-input type="password" name="confirm" id="confirm"></material-input>
                         </material-input-group>
                         <br>
-                        <material-button class="material-button-raised material-button-colored">
+                        <material-button class="material-button-raised material-theme-red">
                             Register
                         </material-button>
                     </form>

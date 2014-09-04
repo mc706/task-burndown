@@ -1,30 +1,30 @@
 <div class="task-view" layout=vertical layout-lg="horiztonal" layout-md="horizontal" layout-sm="vertical" layout-padding>
     <div flex>
         <material-content class="material-whiteframe-z1 content-left">
-            <material-toolbar id="new_task_toolbar" class="material-toolbar material-theme-light">
+            <material-toolbar id="new_task_toolbar" class="material-toolbar material-theme-orange">
                 <h4>Add New Task</h4>
             </material-toolbar>
             <material-content class="material-content-padding" layout="vertical">
                 <form name="NewTaskForm" ng-submit="submitNewTask(NewTaskForm.$valid)" novalidate>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="title">Title</label>
                         <material-input class="material-input" type="text" name="title" required
                                         ng-model="newTask.title"></material-input>
                         <p class="error" ng-show="NewTaskForm.title.$invalid && (!NewTaskForm.title.$pristine || submitted)">A Title is required</p>
                     </material-input-group>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="description">Description</label>
                         <material-input class="material-input" type="text" name="description"
                                         ng-model="newTask.description"></material-input>
 
                     </material-input-group>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="category">Category</label><br><br>
                         <select id=category name=category ng-options="category.id as category.name for category in categories"
                                 ng-model="newTask.category" flex required></select>
                         <p class="error" ng-show="NewTaskForm.category.$invalid && (!NewTaskForm.category.$pristine || submitted)">A Category is required</p>
                     </material-input-group>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="weight">Task Weight</label>
                         <material-slider>
                             <input type="range" ng-model="newTask.weight" id=weight min="1" max="13" step="1" required>
@@ -34,7 +34,7 @@
                     <br>
                     <material-input-group layout="horizontal">
                         <div flex></div>
-                        <material-button class="material-button-raised material-button-colored" type="submit">
+                        <material-button class="material-button-raised material-theme-red" type="submit">
                             Submit
                         </material-button>
                     </material-input-group>
@@ -43,7 +43,7 @@
         </material-content>
         <br>
         <material-content class="material-whiteframe-z1">
-            <material-toolbar id="current_sprint_toolbar" class="material-toolbar material-theme-light">
+            <material-toolbar id="current_sprint_toolbar" class="material-toolbar material-theme-orange">
                 <h4>Current Sprint</h4>
             </material-toolbar>
             <material-content class="material-content-padding" layout="vertical">
@@ -69,7 +69,7 @@
     </div>
     <div flex>
         <material-content class="material-whiteframe-z1 content-right">
-            <material-toolbar scroll-shrink class="material-theme-light material-toolbar">
+            <material-toolbar scroll-shrink class="material-theme-orange material-toolbar">
                 <h4>Backlog</h4>
             </material-toolbar>
             <material-content class="material-content-padding">

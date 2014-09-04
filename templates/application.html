@@ -2,7 +2,7 @@
 <div ng-app="task-burndown" class="app-root">
     <div ng-controller="GlobalController" layout="horizontal">
         <material-sidenav layout="vertical" class="material-sidenav-left material-whiteframe-z3" component-id="left">
-            <material-toolbar class="material-theme-light material-medium-tall">
+            <material-toolbar class="material-theme-orange material-medium-tall">
                 <h1 class="material-toolbar-tools" style="padding-top:25px;">
                     <i class="fa fa-2x fa-fire" ng-click="goHome();"></i>
                     <a href="#" ng-click="goHome()">Task<br>Burndown</a>
@@ -19,7 +19,7 @@
             </material-content>
         </material-sidenav>
         <div layout="vertical" layout-fill>
-            <material-toolbar class="material-theme-dark material-medium-tall">
+            <material-toolbar class="material-theme-red material-medium-tall">
                 <!--page header-->
                 <div class="material-toolbar-tools" ng-click="toggleMenu()">
                     <div class="menu-icon" hide-md>

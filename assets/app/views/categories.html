@@ -2,12 +2,12 @@
      layout-padding>
     <div flex>
         <material-content class="material-whiteframe-z1">
-            <material-toolbar class="material-toolbar material-theme-light">
+            <material-toolbar class="material-toolbar material-theme-orange">
                 <h4>New Category</h4>
             </material-toolbar>
             <material-content class="material-content-padding" layout="vertical">
                 <form name="NewCategoryForm" ng-submit="submitNewCategory(NewCategoryForm.$valid)" novalidate>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="name">Name</label>
                         <material-input class="material-input" type="text" name="name" required
                                         ng-model="newCategory.name"></material-input>
@@ -18,7 +18,7 @@
                     </material-input-group>
                     <material-input-group layout="horizontal">
                         <div flex></div>
-                        <material-button class="material-button-raised material-button-colored" type="submit">
+                        <material-button class="material-button-raised material-theme-red" type="submit">
                             Submit
                         </material-button>
                     </material-input-group>
@@ -27,7 +27,7 @@
         </material-content>
         <br>
         <material-content class="material-whiteframe-z1 content-right">
-            <material-toolbar scroll-shrink class="material-theme-light material-toolbar">
+            <material-toolbar scroll-shrink class="material-theme-orange material-toolbar">
                 <h4>Breakdown</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
@@ -37,7 +37,7 @@
     </div>
     <div flex>
         <material-content class="material-whiteframe-z1 content-right">
-            <material-toolbar scroll-shrink class="material-theme-light material-toolbar">
+            <material-toolbar scroll-shrink class="material-theme-orange material-toolbar">
                 <h4>Categories</h4>
             </material-toolbar>
             <material-content class="material-content-padding">

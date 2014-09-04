@@ -2,7 +2,7 @@
      layout-padding ng-if="!noSprint">
     <div flex>
         <material-content class="material-whiteframe-z1">
-            <material-toolbar class="material-toolbar material-theme-light">
+            <material-toolbar class="material-toolbar material-theme-orange">
                 <h4>Tasks For Current Sprint</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
@@ -28,7 +28,7 @@
     </div>
     <div flex>
         <material-content class="material-whiteframe-z1">
-            <material-toolbar class="material-toolbar material-theme-light">
+            <material-toolbar class="material-toolbar material-theme-orange">
                 <h4>Burndown</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
@@ -45,12 +45,12 @@
         </material-content>
         <br>
         <material-content class="material-whiteframe-z1 content-left">
-            <material-toolbar class="material-toolbar material-theme-light">
+            <material-toolbar class="material-toolbar material-theme-orange">
                 <h4>New Sprint</h4>
             </material-toolbar>
             <material-content class="material-content-padding" layout="vertical">
                 <form name="NewSprintForm" ng-submit="submitNewSprint(NewSprintForm.$valid)" novalidate>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="name">Name</label>
                         <material-input class="material-input" type="text" name="name" required
                                         ng-model="newTask.name"></material-input>
@@ -59,7 +59,7 @@
                             A name is required
                         </p>
                     </material-input-group>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="date_started">Start Date</label>
                         <material-input class="material-input" type="text" name="date_started" id="date_started"
                                         ng-model="newTask.date_started"></material-input>
@@ -68,7 +68,7 @@
                             A start is required
                         </p>
                     </material-input-group>
-                    <material-input-group>
+                    <material-input-group class="material-input-group-theme-orange">
                         <label for="date_finish">Completion Date</label>
                         <material-input class="material-input" type="text" name="date_finish" id="date_finish"
                                         ng-model="newTask.date_finish"></material-input>
@@ -79,7 +79,7 @@
                     </material-input-group>
                     <material-input-group layout="horizontal">
                         <div flex></div>
-                        <material-button class="material-button-raised material-button-colored" type="submit">
+                        <material-button class="material-button-raised material-theme-red" type="submit">
                             Submit
                         </material-button>
                     </material-input-group>
@@ -89,7 +89,7 @@
     </div>
     <div flex>
         <material-content class="material-whiteframe-z1">
-            <material-toolbar class="material-toolbar material-theme-light">
+            <material-toolbar class="material-toolbar material-theme-orange">
                 <h4>Burndown</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
