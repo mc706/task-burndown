@@ -5,3 +5,4 @@ django-filter==0.7
 djangorestframework==2.4.0
 docutils==0.12
 wsgiref==0.1.2
+fabric==1.10.0
