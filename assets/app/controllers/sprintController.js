@@ -49,6 +49,7 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
         TaskService.updateTask(task.id, task).then(function (data) {
             $scope.sprint.tasks.push(data);
             $scope.sprint.sprint_total += task.weight;
+            task.backlog = false;
         });
     };
 
