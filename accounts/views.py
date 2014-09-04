@@ -51,15 +51,9 @@ def register(request):
             try:
                 user = User.objects.create_user(username, email, password)
                 user.save()
-                resp = {"registered": True, "errors": errors}
-                return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
+                return redirect(reverse('login'))
             except Exception as ex:
                 errors.append({'message': ex})
-                resp = {"registered": False, "errors": errors}
-                return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
-        else:
-            resp = {"login": False, "errors": errors}
-            return HttpResponse(status=200, content_type='application/json', content=json.dumps(resp))
     return render_to_response("register.html", {'errors': errors}, RequestContext(request))
 
 

@@ -17,7 +17,7 @@
                             <div class="errors">{{ error.message }}</div>
                         {% endfor %}
                     {% endif %}
-                    <form action="{% url "login" %}" method="post" layout="vertical">
+                    <form action="{% url "register" %}" method="post" layout="vertical">
                         {% csrf_token %}
                         <material-input-group class="material-input-group-theme-orange">
                             <label for="username" >Username</label>
