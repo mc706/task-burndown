@@ -46,10 +46,10 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
     $scope.addTask = function (task) {
         $log.debug('addTask Called', task);
         task.sprint = sprint;
+        task.backlog = false;
         TaskService.updateTask(task.id, task).then(function (data) {
             $scope.sprint.tasks.push(data);
             $scope.sprint.sprint_total += task.weight;
-            task.backlog = false;
         });
     };
 
