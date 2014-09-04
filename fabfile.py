@@ -6,4 +6,3 @@ def deploy():
     local('git pull')
     local('python2.7 manage.py collectstatic --noinput')
     local('python2.7 manage.py migrate')
-    local('../apache/bin/restart')
