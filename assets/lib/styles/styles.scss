@@ -5,7 +5,10 @@
 @import 'vendor/font-awesome';
 
 //custom styles
+@import 'site/animations';
 @import 'site/global';
+
+//individual pages
 @import 'site/login';
 @import 'site/register';
 @import 'site/tasks';
