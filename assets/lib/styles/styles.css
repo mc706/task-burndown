@@ -4773,6 +4773,11 @@ material-sidenav material-content material-button.menu-item {
 .material-toolbar {
   padding: 0 15px; }
 
+div.landing-page material-content {
+  background-color: white; }
+  div.landing-page material-content material-toolbar {
+    padding: 0 15px; }
+
 .login-page {
   height: 100%; }
   .login-page material-toolbar {
