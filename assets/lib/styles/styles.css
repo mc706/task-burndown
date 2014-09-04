@@ -420,7 +420,7 @@ table {
 @include material-theme('grey', #f0f0f0, #e0e0e0, #a2a2a2, #636363, #252525);
 */
 .material-theme-light {
-  background-color: #4285f4 !important;
+  background-color: #ff5722 !important;
   color: #f1f1f1 !important; }
 
 .material-theme-light-blue {
@@ -432,7 +432,7 @@ table {
   color: #f1f1f1 !important; }
 
 .material-theme-dark {
-  background-color: #3f51b5 !important;
+  background-color: #db4437 !important;
   color: #f1f1f1 !important; }
 
 .material-theme-green {
@@ -456,10 +456,10 @@ table {
   color: #f1f1f1 !important; }
 
 .material-input-group-theme-light.material-input-has-value input, .material-input-group-theme-light.material-input-focused input {
-  border-color: #4285f4; }
+  border-color: #ff5722; }
 
 .material-input-group-theme-light.material-input-has-value label, .material-input-group-theme-light.material-input-focused label {
-  color: #4285f4; }
+  color: #ff5722; }
 
 .material-input-group-theme-light-blue.material-input-has-value input, .material-input-group-theme-light-blue.material-input-focused input {
   border-color: #03a9f4; }
@@ -468,10 +468,10 @@ table {
   color: #03a9f4; }
 
 .material-input-group-theme-dark.material-input-has-value input, .material-input-group-theme-dark.material-input-focused input {
-  border-color: #3f51b5; }
+  border-color: #db4437; }
 
 .material-input-group-theme-dark.material-input-has-value label, .material-input-group-theme-dark.material-input-focused label {
-  color: #3f51b5; }
+  color: #db4437; }
 
 .material-input-group-theme-green.material-input-has-value input, .material-input-group-theme-green.material-input-focused input {
   border-color: #0f9d58; }
@@ -1985,8 +1985,8 @@ material-button {
   overflow: hidden; }
 
 material-button.material-button-colored {
-  color: #4285f4;
-  fill: #4285f4; }
+  color: #ff5722;
+  fill: #ff5722; }
 
 material-button.material-button-cornered {
   border-radius: 0; }
@@ -2021,7 +2021,7 @@ material-button.material-button-raised:hover, material-button.material-button-ra
   background-color: #d6d6d6; }
 
 material-button.material-button-raised.material-button-colored {
-  background-color: #4285f4;
+  background-color: #ff5722;
   color: #fff; }
 
 material-button.material-button-raised.material-button-colored:hover, material-button.material-button-raised.material-button-colored:focus {
@@ -2795,7 +2795,7 @@ material-tabs {
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  background-color: #4285F4; }
+  background-color: #ff5722; }
 
 .tab-paginator {
   z-index: 1;
