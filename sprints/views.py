@@ -1,7 +1,7 @@
 from rest_framework import viewsets, permissions
 from sprints.models import Sprint
 from sprints.serializers import SprintSerializer
-from task_burndown.permissions import IsOwnerOrReadOnly
+from task_burndown.permissions import IsOwner
 
 
 class SprintViewSet(viewsets.ModelViewSet):
@@ -11,9 +11,11 @@ class SprintViewSet(viewsets.ModelViewSet):
 
     Additionally we also provide an extra `highlight` action.
     """
-    queryset = Sprint.objects.all()
     serializer_class = SprintSerializer
-    permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated, IsOwner,)
 
     def pre_save(self, obj):
         obj.account = self.request.user
+
+    def get_queryset(self):
+        return Sprint.objects.filter(account=self.request.user)
