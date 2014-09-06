@@ -25,7 +25,7 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
         $location.path('/sprints/' + sprint.id);
     };
 
-    //form validation and submission
+    //form validation and submissiond
     $scope.submitNewSprint = function (isValid) {
         $log.debug('submitNewSprint called');
         $scope.submitted = true;

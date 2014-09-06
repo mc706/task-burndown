@@ -1,4 +1,4 @@
-var app = angular.module("task-burndown", ['ngCookies', 'ngRoute', 'ngAnimate', 'ngMaterial', "highcharts-ng"]);
+var app = angular.module("task-burndown", ['ngCookies', 'ngRoute', 'ngAnimate', 'ngMaterial', "highcharts-ng", "ui.bootstrap"]);
 
 app.run(function ($http, $cookies) {
     "use strict";
@@ -41,7 +41,7 @@ app.config(function ($routeProvider, $locationProvider) {
                     return SprintService.listSprints();
                 },
                 current: function (SprintService) {
-                    var sprints = SprintService.listSprints()
+                    var sprints = SprintService.listSprints();
                 }
             }
         }).when('/tasks/',
