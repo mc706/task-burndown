@@ -32,30 +32,64 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
     };
 
     //highcharts configurations
-    $scope.initializeBurndownChart = function (sprint) {
-        return {
-            options: {
-                chart: {
-                    type: 'areaspline'
-                },
-                tooltip: {
-                    style: {
-                        padding: 10,
-                        fontWeight: 'bold'
+    if ($scope.sprint) {
+        $scope.initializeBurndownChart = function (sprint) {
+            return {
+                options: {
+                    chart: {
+                        type: 'areaspline'
+                    },
+                    tooltip: {
+                        style: {
+                            padding: 10,
+                            fontWeight: 'bold'
+                        }
                     }
+                },
+                series: [
+                    {
+                        data: sprint.burndown
+                    }
+                ],
+                title: {
+                    text: 'Burndown'
                 }
-            },
-            series: [
-                {
-                    data: sprint.burndown
-                }
-            ],
-            title: {
-                text: 'Burndown'
-            }
+            };
         };
+
+        $scope.sprint.burndown = $scope.initializeBurndownChart($scope.sprint);
+    }
+    //form validation and submission
+    $scope.submitNewSprint = function (isValid) {
+        $log.debug('submitNewSprint called');
+        $scope.submitted = true;
+        if (isValid) {
+            $log.debug('Form Submission Valid');
+            SprintService.createSprint($scope.newSprint).then(function (data) {
+                $scope.sprints.push(data);
+                $scope.newSprint = {};
+                $scope.NewSprintForm.$setPristine();
+                $scope.submitted = false;
+            });
+        } else {
+            $log.debug('Form Submission Invalid');
+        }
     };
 
-    $scope.sprint.burndown = $scope.initializeBurndownChart($scope.sprint);
-
+    $scope.submitNewTask = function (isValid) {
+        $log.debug('newTask Called');
+        $scope.submitted = true;
+        if (isValid) {
+            $log.debug('Form Submission Valid');
+            TaskService.createTask($scope.newTask).then(function (data) {
+                $scope.tasks.push(data);
+                $scope.initializeTasks();
+                $scope.newTask = {};
+                $scope.NewTaskForm.$setPristine();
+                $scope.submitted = false;
+            });
+        } else {
+            $log.debug('Form Submission Invalid');
+        }
+    };
 });
