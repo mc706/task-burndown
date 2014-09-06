@@ -1,6 +1,26 @@
 from rest_framework import serializers
 from sprints.models import Sprint
-from tasks.serializers import TaskSerializer
+from tasks.models import Task
+
+
+class BasicTaskSerializer(serializers.ModelSerializer):
+    account = serializers.Field(source='account.username')
+    backlog = serializers.BooleanField(source='is_backlog', read_only=True)
+
+    class Meta:
+        model = Task
+        fields = (
+            'id',
+            'account',
+            'title',
+            'description',
+            'category',
+            'completed',
+            'backlog',
+            'weight',
+            'date_added',
+            'date_closed',
+        )
 
 
 class SprintSerializer(serializers.HyperlinkedModelSerializer):
@@ -8,7 +28,7 @@ class SprintSerializer(serializers.HyperlinkedModelSerializer):
     sprint_total = serializers.Field(source='get_sprint_total')
     active_total = serializers.Field(source='get_active_total')
     burndown = serializers.Field(source='get_burndown')
-    tasks = TaskSerializer(many=True, read_only=True)
+    tasks = BasicTaskSerializer(many=True, read_only=True)
     active = serializers.Field(source='is_active')
 
     class Meta:
@@ -25,3 +45,4 @@ class SprintSerializer(serializers.HyperlinkedModelSerializer):
             'active_total',
             'burndown',
         )
+

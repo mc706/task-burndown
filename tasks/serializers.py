@@ -8,6 +8,24 @@ class TaskSerializer(serializers.ModelSerializer):
     backlog = serializers.BooleanField(source='is_backlog', read_only=True)
     date_closed = serializers.DateTimeField(read_only=True)
 
+    def validate_category(self, attrs, source):
+        """
+        validate that category is owned by user
+        """
+        category = attrs[source]
+        if category.account != self.context['request'].user:
+            raise serializers.ValidationError("You do not have access to this category")
+        return attrs
+
+    def validate_sprint(self, attrs, source):
+        """
+        validate that category is owned by user
+        """
+        sprint = attrs[source]
+        if sprint.account != self.context['request'].user:
+            raise serializers.ValidationError("You do not have access to this sprint")
+        return attrs
+
     class Meta:
         model = Task
         fields = (

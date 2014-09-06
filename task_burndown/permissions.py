@@ -1,5 +1,5 @@
 from rest_framework import permissions
-
+from rest_framework import filters
 
 class IsOwner(permissions.BasePermission):
     """
@@ -9,3 +9,11 @@ class IsOwner(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         return obj.account == request.user
+
+
+class IsOwnerFilterBackend(filters.BaseFilterBackend):
+    """
+    Filter that only allows users to see their own objects.
+    """
+    def filter_queryset(self, request, queryset, view):
+        return queryset.filter(account=request.user)
