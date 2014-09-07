@@ -21,7 +21,6 @@
                     <div layout="horizontal">
                         <div flex>
                             <label for="date_start">Start Date</label>
-                            {{ minSprintDate }}
                             <datepicker ng-model="newSprint.date_start" min-date="minSprintDate" max-date="" id="date_start" name="date_start" format="yyyy-mm-dd" show-weeks="false" ></datepicker>
                             <p class="error"
                            ng-show="NewSprintForm.date_start.$invalid && (!NewSprintForm.date_start.$pristine || submitted)">
