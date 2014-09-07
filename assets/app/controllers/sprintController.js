@@ -73,18 +73,18 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
             $scope.sprint.sprint_total -= task.weight;
         });
     };
-
-    //date picker settings
-    $scope.getMinSprintDate = function () {
-        var maxDate = 0;
-        angular.forEach($scope.sprints, function (sprint) {
-            maxDate = maxDate > sprint.date_finish ? maxDate : sprint.date_finish;
-        });
-        return $scope.getDate(maxDate, "date");
-    };
-    $scope.minSprintDate = $scope.getMinSprintDate();
-    $log.debug("minSprintDate:", $scope.minSprintDate);
-
+    if (sprints.length > 0) {
+        //date picker settings
+        $scope.getMinSprintDate = function () {
+            var maxDate = 0;
+            angular.forEach($scope.sprints, function (sprint) {
+                maxDate = maxDate > sprint.date_finish ? maxDate : sprint.date_finish;
+            });
+            return $scope.getDate(maxDate, "date");
+        };
+        $scope.minSprintDate = $scope.getMinSprintDate();
+        $log.debug("minSprintDate:", $scope.minSprintDate);
+    }
     //highcharts configurations
     $scope.initializeBurndownChart = function (sprint) {
         return {
