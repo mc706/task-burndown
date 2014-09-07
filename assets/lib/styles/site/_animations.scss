@@ -29,6 +29,13 @@
   }
 }
 
+/* slide in from the bottom */
+@keyframes slideOutRight {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 /* rotate out newspaper */
 @keyframes rotateOutNewspaper {
   to {
@@ -68,11 +75,11 @@
 
 
 .ng-enter {
-  animation: scaleUp 0.5s both ease-in;
+  animation: slideInRight 0.5s both ease-in;
   z-index: 8888;
 }
 
 .ng-leave {
-  animation: rotateFall 0.5s both ease-in;
+  animation: slideOutRight 0.5s both ease-in;
   z-index: 9999;
 }
