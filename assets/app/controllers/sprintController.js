@@ -47,7 +47,7 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
     //add remove tasks to sprint
     $scope.addTask = function (task) {
         $log.debug('addTask Called', task);
-        task.sprint = sprint;
+        task.sprints.push(sprint);
         task.backlog = false;
         TaskService.updateTask(task.id, task).then(function (data) {
             $scope.sprint.tasks.push(data);
@@ -57,11 +57,15 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
 
     $scope.removeTask = function (index) {
         var task = $scope.sprint.tasks[index];
-        task.sprint = null;
+        angular.forEach(task.sprints, function(ts, i) {
+            if (ts.id === $scope.sprint.id) {
+                task.sprints.splice(i, 1);
+            }
+        });
         TaskService.updateTask(task.id, task).then(function (data) {
             angular.forEach($scope.tasks, function (t, i) {
                 if (t.id === task.id) {
-                    $scope.tasks[i].sprint = null;
+                    //$scope.tasks[i].sprint = null;
                     $scope.tasks[i].backlog = true;
                 }
             });

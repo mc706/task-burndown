@@ -10035,7 +10035,7 @@ button.close {
   z-index: 8888; }
 
 .ng-leave {
-  animation: slideOutLeft 0.5s both ease-in;
+  animation: rotateFall 0.5s both ease-in;
   z-index: 9999; }
 
 html {
@@ -10140,3 +10140,6 @@ div.stats-view material-content {
   background-color: white; }
   div.stats-view material-content material-toolbar {
     padding: 0 15px; }
+
+material-toolbar.material-medium-tall .material-toolbar-tools {
+  height: 44px !important; }

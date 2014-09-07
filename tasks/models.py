@@ -14,7 +14,7 @@ class Task(models.Model):
     description = models.TextField(blank=True)
 
     category = models.ForeignKey("Category", related_name='tasks')
-    sprint = models.ForeignKey(Sprint, blank=True, null=True, related_name='tasks')
+    sprints = models.ManyToManyField(Sprint, blank=True, null=True, related_name='tasks')
 
     completed = models.BooleanField(default=False)
 
@@ -27,10 +27,7 @@ class Task(models.Model):
         return self.title
 
     def is_backlog(self):
-        if not self.sprint:
-            return True
-        else:
-            return False
+        return not (self.completed or any([sprint.is_active for sprint in self.sprints.all()]))
 
 
 class Category(models.Model):

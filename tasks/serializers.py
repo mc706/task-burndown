@@ -17,14 +17,15 @@ class TaskSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("You do not have access to this category")
         return attrs
 
-    def validate_sprint(self, attrs, source):
+    def validate_sprints(self, attrs, source):
         """
         validate that category is owned by user
         """
         if source in attrs:
-            sprint = attrs[source]
-            if hasattr(sprint, 'account') and sprint.account != self.context['request'].user:
-                raise serializers.ValidationError("You do not have access to this sprint")
+            sprints = attrs[source]
+            for sprint in sprints:
+                if hasattr(sprint, 'account') and sprint.account != self.context['request'].user:
+                    raise serializers.ValidationError("You do not have access to this sprint")
         return attrs
 
     class Meta:
@@ -33,7 +34,7 @@ class TaskSerializer(serializers.ModelSerializer):
             'id',
             'account',
             'title',
-            'sprint',
+            'sprints',
             'description',
             'category',
             'completed',

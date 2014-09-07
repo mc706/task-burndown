@@ -23,6 +23,11 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
 
     $scope.updateTask = function (task) {
         $log.debug('updateTask', task);
+        angular.forEach($scope.tasks, function (t) {
+            if (t.id === task.id) {
+                task.sprints = t.sprints;
+            }
+        });
         TaskService.updateTask(task.id, task).then(function (data) {
             SprintService.getSprint($scope.sprint.id).then(function (sprint) {
                 $scope.sprint = sprint;

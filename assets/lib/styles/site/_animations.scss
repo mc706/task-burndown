@@ -73,6 +73,6 @@
 }
 
 .ng-leave {
-  animation: slideOutLeft 0.5s both ease-in;
+  animation: rotateFall 0.5s both ease-in;
   z-index: 9999;
 }
