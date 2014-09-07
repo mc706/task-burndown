@@ -59,24 +59,31 @@
                             A name is required
                         </p>
                     </material-input-group>
-                    <material-input-group class="material-input-group-theme-orange">
-                        <label for="date_started">Start Date</label>
-                        <material-input class="material-input" type="text" name="date_started" id="date_started"
-                                        ng-model="newTask.date_started"></material-input>
-                        <p class="error"
-                           ng-show="NewSprintForm.date_started.$invalid && (!NewSprintForm.date_started.$pristine || submitted)">
-                            A start is required
-                        </p>
-                    </material-input-group>
-                    <material-input-group class="material-input-group-theme-orange">
-                        <label for="date_finish">Completion Date</label>
-                        <material-input class="material-input" type="text" name="date_finish" id="date_finish"
-                                        ng-model="newTask.date_finish"></material-input>
-                        <p class="error"
-                           ng-show="NewSprintForm.date_finish.$invalid && (!NewSprintForm.date_finish.$pristine || submitted)">
-                            A name is
+                    <br>
+
+                    <div layout="horizontal">
+                        <div flex>
+                            <label for="date_start">Start Date</label>
+                            <datepicker ng-model="newSprint.date_start" id="date_start" name="date_start" format="yyyy-mm-dd" show-weeks="false"></datepicker>
+                            <p class="error"
+                           ng-show="NewSprintForm.date_start.$invalid && (!NewSprintForm.date_start.$pristine || submitted)">
+                            A start date is
                             required</p>
-                    </material-input-group>
+                            {{ newSprint.date_start }}
+                        </div>
+                        <div flex></div>
+                        </div>
+                    <div layout="horizontal">
+                        <div flex>
+                            <label for="date_finish">Completion Date</label>
+                            <datepicker ng-model="newSprint.date_finish" id="date_finish" name="date_finish" format="yyyy-mm-dd" show-weeks="false"></datepicker>
+                            <p class="error"
+                           ng-show="NewSprintForm.date_finish.$invalid && (!NewSprintForm.date_finish.$pristine || submitted)">
+                            A finish date is
+                            required</p>
+                        </div>
+                        <div flex></div>
+                    </div>
                     <material-input-group layout="horizontal">
                         <div flex></div>
                         <material-button class="material-button-raised material-theme-red" type="submit">

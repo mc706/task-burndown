@@ -30,7 +30,9 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
         $log.debug('submitNewSprint called');
         $scope.submitted = true;
         if (isValid) {
-            $log.debug('Form Submission Valid');
+            $log.debug('Form Submission Valid', $scope.newSprint);
+            $scope.newSprint.date_start = $scope.getDate($scope.newSprint.date_start);
+            $scope.newSprint.date_finish = $scope.getDate($scope.newSprint.date_finish);
             SprintService.createSprint($scope.newSprint).then(function (data) {
                 $scope.sprints.push(data);
                 $scope.newSprint = {};
@@ -67,6 +69,17 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
             $scope.sprint.sprint_total -= task.weight;
         });
     };
+
+    //date picker settings
+    $scope.getMinSprintDate = function () {
+        var maxDate = 0;
+        angular.forEach($scope.sprints, function (sprint) {
+            maxDate = maxDate > sprint.date_finish ? maxDate : sprint.date_finish;
+        });
+        return $scope.getDate(maxDate, "date");
+    };
+    $scope.minSprintDate = $scope.getMinSprintDate();
+    $log.debug("minSprintDate:", $scope.minSprintDate);
 
     //highcharts configurations
     $scope.initializeBurndownChart = function (sprint) {

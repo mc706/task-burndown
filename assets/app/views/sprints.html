@@ -21,19 +21,19 @@
                     <div layout="horizontal">
                         <div flex>
                             <label for="date_start">Start Date</label>
-                            <datepicker ng-model="newSprint.date_start" id="date_start" name="date_start" format="yyyy-mm-dd" show-weeks="false"></datepicker>
+                            {{ minSprintDate }}
+                            <datepicker ng-model="newSprint.date_start" min-date="minSprintDate" max-date="" id="date_start" name="date_start" format="yyyy-mm-dd" show-weeks="false" ></datepicker>
                             <p class="error"
                            ng-show="NewSprintForm.date_start.$invalid && (!NewSprintForm.date_start.$pristine || submitted)">
                             A start date is
                             required</p>
-                            {{ newSprint.date_start }}
                         </div>
                         <div flex></div>
                         </div>
                     <div layout="horizontal">
                         <div flex>
                             <label for="date_finish">Completion Date</label>
-                            <datepicker ng-model="newSprint.date_finish" id="date_finish" name="date_finish" format="yyyy-mm-dd" show-weeks="false"></datepicker>
+                            <datepicker ng-model="newSprint.date_finish" id="date_finish" name="date_finish" format="yyyy-mm-dd" show-weeks="false" min-date="newSprint.date_start"></datepicker>
                             <p class="error"
                            ng-show="NewSprintForm.date_finish.$invalid && (!NewSprintForm.date_finish.$pristine || submitted)">
                             A finish date is

@@ -1,4 +1,4 @@
-app.controller("GlobalController", function ($scope, $location, $log, $materialSidenav) {
+app.controller("GlobalController", function ($scope, $location, $log, $materialSidenav, TaskService, SprintService) {
     'use strict';
     $log.debug("Global Controller Initalized");
     $scope.goHome = function () {
@@ -12,10 +12,55 @@ app.controller("GlobalController", function ($scope, $location, $log, $materialS
 
     };
 
+    $scope.$on('$routeChangeStart', function (next, current) {
+        $log.debug('route changed, hiding menu');
+        $materialSidenav('left').toggle(false);
+    });
+
     $scope.test = "Home";
 
     $scope.go = function (url) {
         $location.path(url);
     };
+
+    //global helper functions
+
+    $scope.getDate = function (date, func) {
+        var year, month, day;
+        console.log(func);
+        switch (func) {
+            case "string":
+                year = date.getFullYear();
+                month = date.getMonth() + 1;
+                day = date.getDate();
+                if (day < 10) {
+                    day = '0' + day;
+                }
+
+                if (month < 10) {
+                    month = '0' + month;
+                }
+                return year + '-' + month + '-' + day;
+            case "date":
+                year = parseInt(date.split('-')[0], 10);
+                month = parseInt(date.split('-')[1], 10);
+                day = parseInt(date.split('-')[2], 10);
+                month = month !== 0 ? month - 1 : 11;
+                return new Date(year, month, day);
+            default:
+                year = date.getFullYear();
+                month = date.getMonth() + 1;
+                day = date.getDate();
+                if (day < 10) {
+                    day = '0' + day;
+                }
+
+                if (month < 10) {
+                    month = '0' + month;
+                }
+                return year + '-' + month + '-' + day;
+        }
+    };
+
 
 });

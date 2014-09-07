@@ -64,7 +64,9 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
         $log.debug('submitNewSprint called');
         $scope.submitted = true;
         if (isValid) {
-            $log.debug('Form Submission Valid');
+            $log.debug('Form Submission Valid', $scope.newSprint);
+            $scope.newSprint.date_start = $scope.getDate($scope.newSprint.date_start);
+            $scope.newSprint.date_finish = $scope.getDate($scope.newSprint.date_finish);
             SprintService.createSprint($scope.newSprint).then(function (data) {
                 $scope.sprints.push(data);
                 $scope.newSprint = {};
