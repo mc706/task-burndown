@@ -62,7 +62,7 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
                         color: 'red',
                         data: [
                             [0, sprint.sprint_total],
-                            [sprint.burndown.length, 0]
+                            [sprint.burndown.length - 1, 0]
                         ],
                         marker: {
                             enabled: false
