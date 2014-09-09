@@ -57,7 +57,7 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
 
     $scope.removeTask = function (index) {
         var task = $scope.sprint.tasks[index];
-        angular.forEach(task.sprints, function(ts, i) {
+        angular.forEach(task.sprints, function (ts, i) {
             if (ts.id === $scope.sprint.id) {
                 task.sprints.splice(i, 1);
             }
@@ -101,7 +101,26 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
             },
             series: [
                 {
+                    name: 'Remaining Task Weight',
                     data: sprint.burndown
+                },
+                {
+                    type: 'line',
+                    name: 'Guide Line',
+                    color: 'red',
+                    data: [
+                        [0, sprint.sprint_total],
+                        [sprint.burndown.length, 0]
+                    ],
+                    marker: {
+                        enabled: false
+                    },
+                    states: {
+                        hover: {
+                            lineWidth: 0
+                        }
+                    },
+                    enableMouseTracking: false
                 }
             ],
             title: {

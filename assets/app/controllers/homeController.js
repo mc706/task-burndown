@@ -53,7 +53,26 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
                 },
                 series: [
                     {
+                        name: 'Remaining Task Weight',
                         data: sprint.burndown
+                    },
+                    {
+                        type: 'line',
+                        name: 'Guide Line',
+                        color: 'red',
+                        data: [
+                            [0, sprint.sprint_total],
+                            [sprint.burndown.length, 0]
+                        ],
+                        marker: {
+                            enabled: false
+                        },
+                        states: {
+                            hover: {
+                                lineWidth: 0
+                            }
+                        },
+                        enableMouseTracking: false
                     }
                 ],
                 title: {
