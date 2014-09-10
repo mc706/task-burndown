@@ -20,15 +20,16 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
         $log.debug("Selected Sprint: ", $scope.sprint);
     }
 
-    $scope.backLogTotal = function () {
-        var backlogTotal = 0;
+    //backlog total calculation
+    $scope.getBackLogTotal = function () {
+        $scope.backlogTotal = 0;
         angular.forEach($scope.tasks, function (task, i) {
             if (task.backlog) {
-                backlogTotal += task.weight;
+                $scope.backlogTotal += task.weight;
             }
         });
-        return backlogTotal;
     };
+    $scope.getBackLogTotal();
 
     //helper functions
     $scope.viewSprint = function (sprint) {
@@ -62,6 +63,7 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
         TaskService.updateTask(task.id, task).then(function (data) {
             $scope.sprint.tasks.push(data);
             $scope.sprint.sprint_total += task.weight;
+            $scope.getBackLogTotal();
         });
     };
 
@@ -81,6 +83,7 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
             });
             $scope.sprint.tasks.splice(index, 1);
             $scope.sprint.sprint_total -= task.weight;
+            $scope.getBackLogTotal();
         });
     };
     if (sprints.length > 0) {
