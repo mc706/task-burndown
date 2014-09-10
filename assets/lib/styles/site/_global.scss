@@ -46,3 +46,25 @@ img.logo-42 {
   top:15px;
   right:15px;
 }
+.breadcrumbs {
+  margin: 0 0 10px 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    a:hover {
+      text-decoration: none;
+      color:#FFF;
+    }
+  }
+  li:after {
+    content: '\f054';
+    font-family: 'FontAwesome';
+    display: inline-block;
+    font-size: 10px;
+    padding: 0px 10px;
+  }
+  li:last-child:after {
+    content: '';
+  }
+}

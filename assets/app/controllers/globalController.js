@@ -23,6 +23,30 @@ app.controller("GlobalController", function ($scope, $location, $log, $materialS
         $location.path(url);
     };
 
+
+    $scope.generateBreadCrumb = function () {
+        var parts = $location.path().split('/'), pieces = [], crumbs = [];
+        parts.splice(0, 1);
+        angular.forEach(parts, function (part) {
+            if (part) {
+                pieces.push(part);
+                crumbs.push({
+                    link: pieces.join('/'),
+                    name: part.toUpperCase()
+                });
+            }
+        });
+        return crumbs.filter(function (e) {
+            return e;
+        });
+    };
+
+    $scope.breadCrumb = $scope.generateBreadCrumb();
+
+    $scope.$on('$routeChangeSuccess', function () {
+        $scope.breadCrumb = $scope.generateBreadCrumb();
+    });
+
     //global helper functions
 
     $scope.getDate = function (date, func) {

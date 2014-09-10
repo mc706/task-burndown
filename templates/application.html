@@ -26,8 +26,12 @@
                         <i class="fa fa-bars"></i>
                     </div>
                     <h2 hide="" block-sm="" class="ng-binding">
-                        {{ test }}
+                        <ul class="breadcrumbs">
+                        <li><a href="#">HOME</a></li>
+                        <li ng-repeat="crumb in breadCrumb"><a href="#{{crumb.link}}">{{ crumb.name }}</a></li>
+                    </ul>
                     </h2>
+
                 </div>
                 <div class="material-toolbar-tools">
                     <span flex></span>
