@@ -24,7 +24,12 @@ app.controller("HomeController", function ($scope, $log, $location, TaskService,
             day = parseInt((today - new Date($scope.sprint.date_start)) / (1000 * 60 * 60 * 24), 10) + 1,
             expected_pace = ($scope.sprint.sprint_total / sprint_length) * day,
             burndownPace = ($scope.sprint.sprint_total - $scope.sprint.active_total) - expected_pace;
-        $scope.burndownPace = '~' +Math.abs(Math.round(burndownPace * 100) / 100) + (burndownPace > 0 ? ' points ahead' : 'points behind');
+            $log.debug('today:', today);
+            $log.debug('sprint_length:', sprint_length);
+            $log.debug('day:', day);
+            $log.debug('expectedPace:', expected_pace);
+            $log.debug('burndownPace:', burndownPace);
+        $scope.burndownPace = '~' +Math.abs(Math.round(burndownPace * 100) / 100) + (burndownPace > 0 ? ' points ahead' : ' points behind');
     };
 
     if (!$scope.sprint) {
