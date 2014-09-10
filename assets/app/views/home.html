@@ -7,7 +7,7 @@
             </material-toolbar>
             <material-content class="material-content-padding">
                 <material-list>
-                    <material-list-item ng-repeat="task in sprint.tasks" layout="horizontal">
+                    <material-list-item ng-repeat="task in sprint.tasks | orderBy:'weight':'true'" layout="horizontal">
                         <div class="material-tile-left" layout=vertical layout-align="center center">
                             <material-checkbox ng-model="task.completed" ng-change="updateTask(task)"></material-checkbox>
                         </div>
