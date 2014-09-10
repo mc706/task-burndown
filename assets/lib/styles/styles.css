@@ -10116,7 +10116,8 @@ div.task-view material-content {
   div.task-view material-content material-list material-list-item .material-tile-content {
     padding-left: 15px; }
 div.task-view form input {
-  width: 100%; }
+  width: 100%;
+  display: inline; }
 
 div.sprints-view material-content, div.sprint-view material-content {
   background-color: white; }

@@ -20,10 +20,12 @@
                     </material-input-group>
                     <material-input-group class="material-input-group-theme-orange">
                         <label for="category">Category</label><br><br>
+                        <br>
                         <select id=category name=category ng-options="category.id as category.name for category in categories"
                                 ng-model="newTask.category" flex required></select>
                         <p class="error" ng-show="NewTaskForm.category.$invalid && (!NewTaskForm.category.$pristine || submitted)">A Category is required</p>
                     </material-input-group>
+                    <br>
                     <material-input-group class="material-input-group-theme-orange">
                         <label for="weight">Task Weight</label>
                         <material-slider>
