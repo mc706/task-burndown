@@ -27,7 +27,7 @@ class Sprint(models.Model):
 
     def get_burndown(self):
         burndown = [self.get_sprint_total()]
-        days = (self.date_start + datetime.timedelta(n) for n in range((self.date_finish - self.date_start).days))
+        days = (self.date_start + datetime.timedelta(n) for n in range((self.date_finish - self.date_start).days + 1))
         for day in days:
             tasks = self.tasks.filter(completed=True)
             burndown.append(burndown[-1] - sum([task.weight for task in tasks if task.date_closed.date()==day]))
