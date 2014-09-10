@@ -23,7 +23,7 @@ class Sprint(models.Model):
         return sum([task.weight for task in self.tasks.all()])
 
     def get_active_total(self):
-        return sum({task.weight for task in self.tasks.all() if not task.completed})
+        return sum([task.weight for task in self.tasks.all() if not task.completed])
 
     def get_burndown(self):
         burndown = [self.get_sprint_total()]
