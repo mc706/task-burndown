@@ -3,12 +3,16 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
     $log.debug('Sprint Controller Loaded');
     //Initialization
     $scope.initializeTasks = function () {
+        $scope.backlogTotal = 0;
         angular.forEach($scope.tasks, function (task, i) {
             //adding category_name to tasks
             $scope.tasks[i].category_name = $filter('filter')(categories, function (l) {
                 return l.id === task.category;
             })[0].name;
             $log.debug('category_name', $scope.tasks[i].category_name);
+            if (task.backlog) {
+                $scope.backlogTotal += task.weight;
+            }
         });
     };
     $scope.tasks = tasks;

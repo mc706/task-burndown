@@ -21,6 +21,13 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
         $log.debug("No Active Sprint Yet");
     }
 
+    $scope.backlogTotal = 0;
+    angular.forEach($scope.tasks, function (task, i) {
+        if (task.backlog) {
+            $scope.backlogTotal += task.weight;
+        }
+    });
+
     $scope.updateTask = function (task) {
         $log.debug('updateTask', task);
         angular.forEach($scope.tasks, function (t) {
