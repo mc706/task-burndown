@@ -2,8 +2,9 @@
      layout-padding ng-if="!noSprint">
     <div flex>
         <material-content class="material-whiteframe-z1">
-            <material-toolbar class="material-toolbar material-theme-orange">
+            <material-toolbar class="material-toolbar material-theme-orange" layout="horizontal">
                 <h4>Tasks For Current Sprint ({{ sprint.active_total }}/{{ sprint.sprint_total }})</h4>
+                <i class="fa fa-edit upper-right" ng-click="go('/sprints/' + sprint.id)"></i>
             </material-toolbar>
             <material-content class="material-content-padding">
                 <material-list>

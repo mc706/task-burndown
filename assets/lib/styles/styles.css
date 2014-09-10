@@ -10070,6 +10070,11 @@ material-sidenav material-content material-button.menu-item {
 img.logo-42 {
   width: 42px; }
 
+.upper-right {
+  position: absolute;
+  top: 15px;
+  right: 15px; }
+
 div.landing-page material-content {
   background-color: white; }
   div.landing-page material-content material-toolbar {
