@@ -20,6 +20,16 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
         $log.debug("Selected Sprint: ", $scope.sprint);
     }
 
+    $scope.backLogTotal = function () {
+        var backlogTotal = 0;
+        angular.forEach($scope.tasks, function (task, i) {
+            if (task.backlog) {
+                backlogTotal += task.weight;
+            }
+        });
+        return backlogTotal;
+    };
+
     //helper functions
     $scope.viewSprint = function (sprint) {
         $location.path('/sprints/' + sprint.id);
