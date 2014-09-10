@@ -1,4 +1,4 @@
-app.controller("HomeController", function ($scope, $log, TaskService, SprintService, tasks, categories, sprints) {
+app.controller("HomeController", function ($scope, $log, $location, TaskService, SprintService, tasks, categories, sprints) {
     'use strict';
     $log.debug('Home Controller Loaded');
     $scope.tasks = tasks;
@@ -16,11 +16,25 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
         }
     });
     $log.debug("Active Sprint: ", $scope.sprint);
+
+    $scope.calculateBurndownPace = function () {
+        //burndown pace calculation
+        var today = new Date(),
+            sprint_length = $scope.sprint.burndown.length,
+            day = parseInt((today - new Date($scope.sprint.date_start)) / (1000 * 60 * 60 * 24), 10) + 1,
+            expected_pace = ($scope.sprint.sprint_total / sprint_length) * day,
+            burndownPace = ($scope.sprint.sprint_total - $scope.sprint.active_total) - expected_pace;
+        $scope.burndownPace = '~' +Math.abs(Math.round(burndownPace * 100) / 100) + (burndownPace > 0 ? ' points ahead' : 'points behind');
+    };
+
     if (!$scope.sprint) {
         $scope.noSprint = true;
         $log.debug("No Active Sprint Yet");
+    } else {
+        $scope.calculateBurndownPace();
     }
 
+    //backlog total calculation
     $scope.backlogTotal = 0;
     angular.forEach($scope.tasks, function (task, i) {
         if (task.backlog) {
@@ -38,7 +52,8 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
         TaskService.updateTask(task.id, task).then(function (data) {
             SprintService.getSprint($scope.sprint.id).then(function (sprint) {
                 $scope.sprint = sprint;
-                $scope.sprint.burndown = $scope.initializeBurndownChart(sprint);
+                $scope.sprint.burndownChart = $scope.initializeBurndownChart(sprint);
+                $scope.calculateBurndownPace();
             });
         });
     };
@@ -88,7 +103,7 @@ app.controller("HomeController", function ($scope, $log, TaskService, SprintServ
             };
         };
 
-        $scope.sprint.burndown = $scope.initializeBurndownChart($scope.sprint);
+        $scope.sprint.burndownChart = $scope.initializeBurndownChart($scope.sprint);
     }
     //form validation and submission
     $scope.submitNewSprint = function (isValid) {
