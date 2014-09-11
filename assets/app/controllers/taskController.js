@@ -48,6 +48,7 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
             });
         }
     });
+    $scope.edit = false;
 
     //helper functions
     $scope.viewTask = function (task) {
@@ -66,6 +67,22 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
                 $scope.newTask = {};
                 $scope.NewTaskForm.$setPristine();
                 $scope.submitted = false;
+            });
+        } else {
+            $log.debug('Form Submission Invalid');
+        }
+    };
+
+    $scope.submitUpdateTask = function (isValid) {
+        $log.debug('updateTask Called');
+        $scope.submitted = true;
+        if (isValid) {
+            $log.debug('Form Submission Valid');
+            TaskService.updateTask($scope.task.id, $scope.task).then(function (data) {
+                $scope.initializeTasks();
+                $scope.TaskForm.$setPristine();
+                $scope.submitted = false;
+                $scope.edit = false;
             });
         } else {
             $log.debug('Form Submission Invalid');
