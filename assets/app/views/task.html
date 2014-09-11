@@ -1,18 +1,69 @@
-<div class="task-view" layout="horizontal" layout-md="horizontal" layout-padding>
+<div class="task-view" layout="horizontal" layout-md="horizontal" layout-padding ng-if="edit">
     <div flex="20" hide hide hide-sm block-md block-lg></div>
-    <material-content class="material-content-padding material-whiteframe-z2" flex>
+    <material-content class="material-content-padding material-whiteframe-z2" flex style="position:relative">
         <h2>{{ task.title }}</h2>
+        <i class="upper-right fa fa-edit" ng-click="toggleEdit(true)"></i>
+
         <p>
             <b>Category: </b> {{ task.category_name }}<br>
             <b>Weight: </b> {{ task.weight }}<br>
-            <b>Sprint: </b> <span ng-show="task.sprint_name">{{ task.sprint_name }}</span><span ng-hide="task.sprint_name">Backlog</span><br>
-            <b>Status: </b> <span ng-show="task.completed">Completed</span><span ng-hide="task.completed">Incomplete</span><br>
+            <!--<b>Sprint: </b> <span ng-show="task.sprint_name">{{ task.sprint_name }}</span><span ng-hide="task.sprint_name">Backlog</span><br>-->
+            <b>Status: </b> <span ng-show="task.completed">Completed</span><span
+                ng-hide="task.completed">Incomplete</span><br>
             <span ng-show="task.completed"><b>Date Completed:</b> {{ task.date_completed }}</span>
         </p>
+
         <p>
             {{ task.description }}
         </p>
 
+    </material-content>
+    <div flex="20" hide hide hide-sm block-md block-lg></div>
+</div>
+<div class="task-view" layout="horizontal" layout-md="horizontal" layout-padding ng-if="!edit">
+    <div flex="20" hide hide hide-sm block-md block-lg></div>
+    <material-content class="material-content-padding material-whiteframe-z2" flex style="position:relative">
+        <form name="TaskForm" ng-submit="submitUpdateTask(TaskForm.$valid)" novalidate>
+            <material-input-group class="material-input-group-theme-orange">
+                <label for="title">Title</label>
+                <material-input class="material-input" type="text" name="title" required
+                                ng-model="task.title"></material-input>
+                <p class="error" ng-show="TaskForm.title.$invalid && (!TaskForm.title.$pristine || submitted)">A
+                    Title is required</p>
+            </material-input-group>
+            <material-input-group class="material-input-group-theme-orange">
+                <label for="description">Description</label>
+                <material-input class="material-input" type="text" name="description"
+                                ng-model="task.description"></material-input>
+
+            </material-input-group>
+            <material-input-group class="material-input-group-theme-orange">
+                <label for="category">Category</label><br><br>
+                <br>
+                <select id=category name=category ng-options="category.id as category.name for category in categories"
+                        ng-model="task.category" flex required></select>
+
+                <p class="error"
+                   ng-show="TaskForm.category.$invalid && (!TaskForm.category.$pristine || submitted)">A Category
+                    is required</p>
+            </material-input-group>
+            <br>
+            <material-input-group class="material-input-group-theme-orange">
+                <label for="weight">Task Weight</label>
+                <material-slider>
+                    <input type="range" ng-model="task.weight" id=weight min="1" max="13" step="1" required>
+                </material-slider>
+                <p class="error" ng-show="TaskForm.weight.$invalid && (!TaskForm.weight.$pristine || submitted)">A
+                    Weight is required</p>
+            </material-input-group>
+            <br>
+            <material-input-group layout="horizontal">
+                <div flex></div>
+                <material-button class="material-button-raised material-theme-red" type="submit">
+                    Submit
+                </material-button>
+            </material-input-group>
+        </form>
     </material-content>
     <div flex="20" hide hide hide-sm block-md block-lg></div>
 </div>
