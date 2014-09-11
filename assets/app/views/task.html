@@ -1,4 +1,4 @@
-<div class="task-view" layout="horizontal" layout-md="horizontal" layout-padding ng-if="edit">
+<div class="task-view" layout="horizontal" layout-md="horizontal" layout-padding ng-if="!edit">
     <div flex="20" hide hide hide-sm block-md block-lg></div>
     <material-content class="material-content-padding material-whiteframe-z2" flex style="position:relative">
         <h2>{{ task.title }}</h2>
@@ -20,7 +20,7 @@
     </material-content>
     <div flex="20" hide hide hide-sm block-md block-lg></div>
 </div>
-<div class="task-view" layout="horizontal" layout-md="horizontal" layout-padding ng-if="!edit">
+<div class="task-view" layout="horizontal" layout-md="horizontal" layout-padding ng-if="edit">
     <div flex="20" hide hide hide-sm block-md block-lg></div>
     <material-content class="material-content-padding material-whiteframe-z2" flex style="position:relative">
         <form name="TaskForm" ng-submit="submitUpdateTask(TaskForm.$valid)" novalidate>
