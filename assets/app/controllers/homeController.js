@@ -20,7 +20,7 @@ app.controller("HomeController", function ($scope, $log, $location, TaskService,
     $scope.calculateBurndownPace = function () {
         //burndown pace calculation
         var today = new Date(),
-            sprint_length = $scope.sprint.burndown.length,
+            sprint_length = $scope.sprint.burndown.length - 1,
             day = parseInt((today - new Date($scope.sprint.date_start)) / (1000 * 60 * 60 * 24), 10) + 1,
             expected_pace = ($scope.sprint.sprint_total / sprint_length) * day,
             burndownPace = ($scope.sprint.sprint_total - $scope.sprint.active_total) - expected_pace;
