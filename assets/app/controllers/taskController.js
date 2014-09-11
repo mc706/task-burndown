@@ -30,7 +30,7 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
             return l.id === $scope.task.category;
         })[0].name;
         if ($scope.task.sprints) {
-            angular.forEach($scope.tasks.sprints, function (sprint) {
+            angular.forEach($scope.tasks.sprints, function () {
                 $scope.task.sprint_name = $filter('filter')(sprints, function (k) {
                     return k.id === $scope.task.sprint;
                 })[0].name;
@@ -53,6 +53,14 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
     //helper functions
     $scope.viewTask = function (task) {
         $location.path('/tasks/' + task.id);
+    };
+
+    $scope.toggleEdit = function (toggle) {
+        if (toggle === "undefined") {
+            $scope.edit = !$scope.edit;
+        } else {
+            $scope.edit = toggle;
+        }
     };
 
     //form validation and submission
@@ -78,9 +86,8 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
         $scope.submitted = true;
         if (isValid) {
             $log.debug('Form Submission Valid');
-            TaskService.updateTask($scope.task.id, $scope.task).then(function (data) {
+            TaskService.updateTask($scope.task.id, $scope.task).then(function () {
                 $scope.initializeTasks();
-                $scope.TaskForm.$setPristine();
                 $scope.submitted = false;
                 $scope.edit = false;
             });
