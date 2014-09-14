@@ -35,7 +35,7 @@ class Sprint(models.Model):
 
     def is_active(self):
         now = datetime.datetime.now()
-        return datetime.datetime.combine(self.date_start, datetime.datetime.min.time()) < now < datetime.datetime.combine(self.date_finish, datetime.datetime.min.time())
+        return datetime.datetime.combine(self.date_start, datetime.datetime.min.time()) < now < datetime.datetime.combine(self.date_finish, datetime.datetime.max.time())
 
     class Meta:
         get_latest_by = 'date_start'
