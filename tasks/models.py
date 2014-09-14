@@ -27,7 +27,7 @@ class Task(models.Model):
         return self.title
 
     def is_backlog(self):
-        return not (self.completed or any([sprint.is_active for sprint in self.sprints.all()]))
+        return not (self.completed or any([sprint.is_active() for sprint in self.sprints.all()]))
 
 
 class Category(models.Model):
