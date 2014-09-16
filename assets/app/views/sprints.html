@@ -57,14 +57,14 @@
                 <h4>Sprints</h4>
             </material-toolbar>
             <material-content class="material-content-padding">
-                <material-card ng-repeat="sprint in sprints | orderBy:'date_finish':true| limitTo:5"
-                               ng-click="viewSprint(sprint)">
-                    <h2>{{ sprint.name }} ({{ sprint.sprint_total }})</h2>
+                <material-card ng-repeat="sprint in sprints | orderBy:'date_finish':true| limitTo:5">
+                    <h2 ng-click="viewSprint(sprint)">{{ sprint.name }} ({{ sprint.sprint_total }})</h2>
                     <highchart id="chart_{{ sprint.name }}" class="burndown-chart"
                                config="sprint.burndownConfig"></highchart>
 
                     <p>{{ sprint.date_start }} - {{ sprint.date_finish }}</p>
-                    <table class="table">
+                    <material-toolbar class="material-theme-orange" ng-click="toggleCollapse(sprint);"><h4>Tasks</h4></material-toolbar>
+                    <table class="table" ng-hide="sprint.collapse">
                         <tr ng-repeat="task in sprint.tasks">
                             <td>
                                 <material-checkbox disabled ng-model="task.completed"></material-checkbox>

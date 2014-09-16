@@ -184,7 +184,15 @@ app.controller("SprintController", function ($scope, $log, $location, $filter, S
         $log.debug($scope.sprints[i].name + ' burndown config:', $scope.sprints[i].burndownConfig);
         $scope.sprints[i].categoryConfig = $scope.initializeCategoryChart(sprint);
         $log.debug($scope.sprints[i].name + ' category config:', $scope.sprints[i].categoryConfig);
+        $scope.sprints[i].collapse = true;
     });
 
-
+    $scope.toggleCollapse = function(sprint, state) {
+        if (state === "undefined") {
+            sprint.collapse = !sprint.collapse;
+        } else {
+            sprint.collapse = state;
+        }
+        return false;
+    };
 });
