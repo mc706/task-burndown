@@ -10098,7 +10098,8 @@ div.landing-page material-content {
     padding: 0 15px; }
 
 img.landing-image {
-  width: 720px !important; }
+  width: 440px !important;
+  margin: 10px 0 0 15px; }
 
 .login-page {
   height: 100%; }
