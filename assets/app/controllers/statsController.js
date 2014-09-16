@@ -59,6 +59,11 @@ app.controller("StatsController", function ($scope, $log, tasks, categories, spr
                 chart: {
                     type: 'column'
                 },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal'
+                    }
+                },
                 tooltip: {
                     style: {
                         padding: 10,
@@ -72,11 +77,6 @@ app.controller("StatsController", function ($scope, $log, tasks, categories, spr
                 categories: labels,
                 title: {
                     text: "Sprint"
-                }
-            },
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
                 }
             },
             title: {
@@ -112,13 +112,22 @@ app.controller("StatsController", function ($scope, $log, tasks, categories, spr
         return {
             options: {
                 chart: {
-                    type: 'area'
+                    type: 'area',
+                    stacking: 'normal'
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal',
+                        lineColor: '#666666',
+                        lineWidth: 1,
+                        marker: {
+                            lineWidth: 1,
+                            lineColor: '#666666'
+                        }
+                    }
                 },
                 tooltip: {
-                    style: {
-                        padding: 10,
-                        fontWeight: 'bold'
-                    }
+                    shared: true
                 }
             },
             series: data,
@@ -136,8 +145,14 @@ app.controller("StatsController", function ($scope, $log, tasks, categories, spr
                 }
             },
             plotOptions: {
-                area: {
-                    stacking: 'normal'
+                series: {
+                    stacking: 'normal',
+                    lineColor: '#666666',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#666666'
+                    }
                 }
             },
             title: {
