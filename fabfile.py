@@ -1,5 +1,8 @@
-from fabric.api import lcd, local, warn_only, cd, run
+from fabric.api import lcd, local, warn_only, cd, run, env
+from fabconfig import hosts, password
 
+env.hosts = hosts
+env.password = password
 
 def local_deploy():
     # pulls new content and deploys it
