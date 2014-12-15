@@ -65,16 +65,26 @@ app.controller("TaskController", function ($scope, $log, $filter, $location, Tas
 
     //form validation and submission
     $scope.submitNewTask = function (isValid) {
+        var added = false;
         $log.debug('newTask Called');
         $scope.submitted = true;
         if (isValid) {
             $log.debug('Form Submission Valid');
+            if ($scope.newTask.current && $scope.sprint) {
+                $scope.newTask.sprints = [$scope.sprint.id];
+                added = true;
+            }
             TaskService.createTask($scope.newTask).then(function (data) {
                 $scope.tasks.push(data);
                 $scope.initializeTasks();
                 $scope.newTask = {};
                 $scope.NewTaskForm.$setPristine();
                 $scope.submitted = false;
+                if ($scope.sprint && added) {
+                    $scope.sprint.tasks.push(data);
+                    $scope.sprint.sprint_total += data.weight;
+                    $scope.sprint.active_total += data.weight;
+                }
             });
         } else {
             $log.debug('Form Submission Invalid');

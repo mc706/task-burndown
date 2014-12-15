@@ -98,7 +98,7 @@ USE_TZ = True
 TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 STATICFILES_DIRS = (BASE_DIR + '/assets',)
 STATIC_URL = '/static/'
-
+STATIC_ROOT = BASE_DIR + '/static'
 try:
     from local_settings import *
 except ImportError as exp:
