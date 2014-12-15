@@ -34,6 +34,9 @@
                         <p class="error" ng-show="NewTaskForm.weight.$invalid && (!NewTaskForm.weight.$pristine || submitted)">A Weight is required</p>
                     </material-input-group>
                     <br>
+                    <material-input-group ng-show="sprint">
+                        <material-checkbox ng-model="newTask.current">Add To Current Sprint</material-checkbox>
+                    </material-input-group>
                     <material-input-group layout="horizontal">
                         <div flex></div>
                         <material-button class="material-button-raised material-theme-red" type="submit">
