@@ -1,0 +1,28 @@
+{
+  "name": "task_burdown",
+  "version": "0.0.0",
+  "description": "App to Track Task Completion",
+  "main": " ",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "bower": "^1.3.12",
+    "jshint": "^2.6.3"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "fab test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mc706/task-burndown.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mc706/task-burndown/issues"
+  },
+  "homepage": "www.taskburndown.com"
+}

@@ -1,0 +1,23 @@
+{
+  "undef": true,
+  "unused": false,
+  "predef": [
+    //Browser Globals
+    "window",
+    "console",
+    //tests
+    "beforeEach",
+    "module",
+    "inject",
+    "describe",
+    "it",
+    "expect",
+    "spyOn",
+    "jasmine",
+    //Library Defined
+    "angular",
+    "md5",
+    //Application defined
+    "app"
+  ]
+}

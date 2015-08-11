@@ -1,0 +1,31 @@
+doc-warnings: no
+test-warnings: no
+strictness: medium
+max-line-length: 120
+uses:
+    - django
+autodetect: yes
+requirements:
+    - requirements.txt
+ignore-paths:
+    - docs
+    - gainsgrapher
+ignore-patterns:
+    - .*/features/.*
+    - ^fabenv.py
+    - ^fabfile.py
+
+pylint:
+    disable:
+        - C1001
+        - W0612
+        - W0613
+        - W0704
+        - W0232
+        - R0901
+        - C0103
+        - R0201
+
+pyflakes:
+    disable:
+        - F401

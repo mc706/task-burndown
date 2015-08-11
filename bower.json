@@ -1,0 +1,25 @@
+{
+  "name": "task-burndown",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mc706/task-burndown",
+  "description": "App to Track Completion",
+  "moduleType": [
+    "es6",
+    "globals",
+    "yui"
+  ],
+  "authors": [
+    ""
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
