@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -24,29 +25,25 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['taskburndown.com','www.taskburndown.com']
+ALLOWED_HOSTS = ['taskburndown.com', 'www.taskburndown.com']
 
 
 # Application definition
 
+from installed_apps import INTERNAL_APPS as apps
+
 INSTALLED_APPS = (
-    #django
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    #third party
-    'rest_framework',
-
-    #apps
-    'tasks',
-    'sprints',
-    'accounts',
-
-)
+                     # django
+                     'django.contrib.admin',
+                     'django.contrib.admindocs',
+                     'django.contrib.auth',
+                     'django.contrib.contenttypes',
+                     'django.contrib.sessions',
+                     'django.contrib.messages',
+                     'django.contrib.staticfiles',
+                     # third party
+                     'rest_framework',
+                 ) + apps
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -94,11 +91,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
-STATICFILES_DIRS = (BASE_DIR + '/assets',)
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'assets'),)
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR + '/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 try:
     from local_settings import *
 except ImportError as exp:

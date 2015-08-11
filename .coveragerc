@@ -1,0 +1,20 @@
+[run]
+branch = False
+source = .
+omit =
+    .virtualenvs/*
+    gainsgrapher/settings.py
+    gainsgrapher/aws_settings.py
+    gainsgrapher/codeship_settings.py
+    gainsgrapher/wsgi.py
+    fabconfig.py
+    fabfile.py
+    core/*
+    */migrations/*
+    manage.py
+    .idea/*
+    fabenv.py
+    */features/*
+
+[report]
+fail_under=100
