@@ -11,6 +11,11 @@ and other general settings.
 Your local_settings contains instance specific settings, such as database information. Since `local_settings.py` is added 
 to the `.gitignore`, you passwords are safe here when sharing your project in version control
 
+###installed_apps.py
+`installed_apps.py` is contains a tuple of all of the user defined applications for this project. It added to the django
+installed apps and the third party apps inside of `settings.py` to makeup the variable `INSTALLED_APPS`. By breaking it
+out, we can run tests specifically surrounding our apps.
+
 ###\_version.py
 `_version.py` is a file that is controls the version of the current app. It is automatically modified by fabric.
 
