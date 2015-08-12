@@ -1,4 +1,4 @@
-app.controller("GlobalController", function ($scope, $location, $log, $materialSidenav, TaskService, SprintService) {
+app.controller("GlobalController", function ($scope, $location, $log, $mdSidenav, TaskService, SprintService) {
     'use strict';
     $log.debug("Global Controller Initalized");
     $scope.goHome = function () {
@@ -7,14 +7,14 @@ app.controller("GlobalController", function ($scope, $location, $log, $materialS
     };
 
     $scope.toggleMenu = function () {
-        $materialSidenav('left').toggle();
+        $mdSidenav('left').toggle();
         $log.debug("Side Menu Toggled");
 
     };
 
     $scope.$on('$routeChangeStart', function (next, current) {
         $log.debug('route changed, hiding menu');
-        $materialSidenav('left').toggle(false);
+        $mdSidenav('left').toggle(false);
     });
 
     $scope.test = "Home";

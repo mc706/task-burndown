@@ -1,0 +1,8 @@
+{% load compress %}
+{% load staticfiles %}
+
+{% compress css %}
+    <link ref="stylesheet" href="{% static "components/bower_components/angular-material/angular-material.css"%}">
+    <link ref="stylesheet" href="{% static "components/bower_components/fontawesome/css/font-awesome.css"%}">
+    <link rel="stylesheet" href="{% static "lib/styles/styles.css"%}">
+{% endcompress %}

@@ -1,59 +1,63 @@
 {% extends "base.html" %}
 
 {% block styles %}
-
+    {% include "main/application_styles.html" %}
 {% endblock styles %}
 
 {% block content %}
-{% verbatim %}
-<div ng-app="task-burndown" class="app-root">
-    <div ng-controller="GlobalController" layout="horizontal" ng-cloak>
-        <material-sidenav layout="vertical" class="material-sidenav-left material-whiteframe-z3" component-id="left">
-            <material-toolbar class="material-theme-orange material-medium-tall">
-                <h1 class="material-toolbar-tools" style="padding-top:25px;">
-                    <img class="logo-42" src="/static/lib/images/taskburndown_favicon.png" ng-click="goHome();">
-                    <a href="#" ng-click="goHome()">Task<br>Burndown</a>
+    {% verbatim %}
+
+    <div ng-app="task-burndown" layout="column" ng-controller="GlobalController" layout-fill ng-cloak flex>
+        <md-toolbar layout="row">
+            <div class="md-toolbar-tools">
+                <md-button ng-click="toggleSideNav('left')" hide-gt-sm class="menuBtn"
+                           aria-label="Toggle Side Navigation">
+                <span class="visuallyhidden">
+                    <span class="fa fa-bars"></span>
+                </span>
+                    <md-tooltip>Toggle Side Navigation</md-tooltip>
+                </md-button>
+                <h1 ng-click="go('')">
+                    <!--<img class="logo-42" src="/static/lib/images/taskburndown_favicon.png" ng-click="goHome();">-->
+                    <a ng-click="goHome()">Task<br>Burndown</a>
                 </h1>
-            </material-toolbar>
-            <material-content flex>
-                <!--sidebar -->
-                <material-button ng-href="#/" class="menu-item menu-title">Home</material-button>
-                <material-button ng-href="#/tasks/" class="menu-item menu-title">Tasks</material-button>
-                <material-button ng-href="#/sprints/" class="menu-item menu-title">Sprints</material-button>
-                <material-button ng-href="#/categories/" class="menu-item menu-title">Categories</material-button>
-                <material-button ng-href="#/stats/" class="menu-item menu-title">Stats</material-button>
-                <!--/sidebar-->
-            </material-content>
-        </material-sidenav>
-        <div layout="vertical" layout-fill>
-            <material-toolbar class="material-theme-red material-medium-tall">
-                <!--page header-->
-                <div class="material-toolbar-tools" ng-click="toggleMenu()">
-                    <div class="menu-icon" hide-md>
-                        <i class="fa fa-bars"></i>
-                    </div>
-                    <h2 hide="" block-sm="" class="ng-binding">
-                        <ul class="breadcrumbs">
-                        <li><a href="#">HOME</a></li>
-                        <li ng-repeat="crumb in breadCrumb"><a href="#{{crumb.link}}">{{ crumb.name }}</a></li>
-                    </ul>
-                    </h2>
 
+                <div flex></div>
+                <div>
+                    <md-button aria-label="Settings" ng-click="go('settings')">
+                        <span class="fa fa-cog"></span>
+                        <md-tooltip>Settings</md-tooltip>
+                    </md-button>
                 </div>
-                <div class="material-toolbar-tools">
-                    <span flex></span>
-                    <material-button ng-href="/logout/">
-                        <i class="fa fa-sign-out">Logout</i>
-                    </material-button>
-                </div>
-                <!--/page header-->
-            </material-toolbar>
+                <md-button aria-label="Sign out">
+                    <span class="fa fa-sign-in"></span>
+                    <md-tooltip>Sign Out</md-tooltip>
+                </md-button>
 
-            <div class="material-content" ng-view></div>
+            </div>
+        </md-toolbar>
+
+        <div layout="row" flex>
+
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                        md-is-locked-open="$mdMedia('gt-sm')">
+                <md-content ng-controller="SidebarController">
+                    <md-button class="menu-item" ng-repeat-start="menu in sidebarMenus" ng-click="go(menu.link)"
+                               aria-label="{{ menu.text }}">
+                        <i class="fa" ng-class="menu.icon"></i>
+                        {{ menu.text }}
+                    </md-button>
+                    <md-divider ng-repeat-end></md-divider>
+                </md-content>
+            </md-sidenav>
+
+            <md-content layout="column" flex class="content-wrapper md-padding" id="content" ng-view ng-cloak>
+
+            </md-content>
         </div>
     </div>
-</div>
-{% endverbatim %}
+
+    {% endverbatim %}
 {% endblock content %}
 
 {% block script %}

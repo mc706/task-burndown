@@ -1,20 +1,20 @@
 .register-page {
   height: 100%;
 
-  material-toolbar {
+  md-toolbar {
     text-align: center;
   }
-  material-content {
+  md-content {
     background-color: white;
 
-    material-input-group {
+    md-input-group {
       padding: 0 15px;
 
       input {
         width:100%;
       }
     }
-    material-button {
+    md-button {
       padding:10px;
     }
   }
