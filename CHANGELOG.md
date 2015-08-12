@@ -1,5 +1,13 @@
 #CHANGELOG
 
+##Version 1.1.1 (2015-08-12)
+
+* updated application structure
+* updated settings folder documentation
+* updated gitignore
+* updated landing page logo
+
+
 ##Version 1.1.0 (2015-08-11)
 
 * updated requirements
