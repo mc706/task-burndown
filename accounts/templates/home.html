@@ -8,7 +8,7 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        {% include "application.html" %}
+        {% include "main/application.html" %}
     {% else %}
         {% include "landing.html" %}
     {% endif %}

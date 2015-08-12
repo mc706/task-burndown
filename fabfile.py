@@ -134,3 +134,20 @@ def test():
     local('coverage run manage.py test %s' % app_list)
     local('coverage report --fail-under=100')
     quality_check()
+
+
+def prepare_assets():
+    local('npm install')
+    local("bower install")
+    compile_scss()
+    local('python manage.py collectstatic --no-input')
+
+
+def compile_scss():
+    with lcd('assets/lib/styles'):
+        local('python -mscss styles.scss > styles.css')
+
+
+def bootstrap():
+    """Sets up certain environment commands"""
+    local('git config commit.template templates/git-commit-template.txt')

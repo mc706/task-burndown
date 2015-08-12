@@ -43,6 +43,7 @@ INSTALLED_APPS = (
                      'django.contrib.staticfiles',
                      # third party
                      'rest_framework',
+                     'compressor',
                  ) + apps
 
 MIDDLEWARE_CLASSES = (

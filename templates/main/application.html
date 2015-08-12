@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+{% endblock styles %}
+
+{% block content %}
 {% verbatim %}
 <div ng-app="task-burndown" class="app-root">
     <div ng-controller="GlobalController" layout="horizontal" ng-cloak>
@@ -47,3 +54,9 @@
     </div>
 </div>
 {% endverbatim %}
+{% endblock content %}
+
+{% block script %}
+    {% include "main/vendor_scripts.html" %}
+    {% include "main/application_scripts.html" %}
+{% endblock script %}

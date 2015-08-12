@@ -1,0 +1,16 @@
+{% load compress %}
+{% load staticfiles %}
+
+{% compress js %}
+    <script src="{% static "lib/scripts/vendor/md5.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/highcharts-custom.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/angular.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/highcharts-ng.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/ui-bootstrap-custom-0.10.0.min.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/ui-bootstrap-custom-tpls-0.10.0.min.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/angular-animate.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/angular-cookies.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/angular-touch.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/angular-material.js" %}"></script>
+    <script src="{% static "lib/scripts/vendor/angular-route.js" %}"></script>
+{% endcompress %}

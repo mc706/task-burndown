@@ -1,0 +1,8 @@
+/* TEAM */
+
+	Developer: Ryan McDevitt
+	Twitter: @mc706
+	Website: http://mc706.com
+	From: Philadelphia, Pennsylvania, United States of America
+
+/* THANKS */

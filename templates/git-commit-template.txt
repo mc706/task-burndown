@@ -1,0 +1,9 @@
+
+#The above line will show up in the change log
+#Details
+
+#Issue Number
+Fixes #
+
+#Time Spent (float in terms of hours)
+Time: []

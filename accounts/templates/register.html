@@ -5,8 +5,8 @@
 {% block base %} <base href="/register">{% endblock base %}
 
 {% block content %}
-    <div ng-app="task-burndown" class="register-page">
-        <div layout="horizontal" layout-fill layout-align="start center" ng-contoller="LoginController">
+    <div ng-app="login" class="register-page">
+        <div layout="horizontal" layout-fill layout-align="start center" ng-contoller="GlobalController">
             <div class="login-form" flex="50" offset="25">
                 <material-toolbar class="material-theme-orange" layout="horizontal">
                     <h2 layout-align="center">Register</h2>
@@ -45,3 +45,8 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block script %}
+    {% include "login_vendor_scripts.html" %}
+    {% include "login_application_scripts.html" %}
+{% endblock script %}

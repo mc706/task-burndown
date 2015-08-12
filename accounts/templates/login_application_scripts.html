@@ -1,0 +1,9 @@
+{% load compress %}
+{% load staticfiles %}
+
+{% compress js %}
+    <script src="{% static "apps/login/app.js" %}"></script>
+    <script src="{% static "apps/login/config/csrf.js" %}"></script>
+    <script src="{% static "apps/login/config/logger.js" %}"></script>
+    <script src="{% static "apps/login/controllers/globalController.js" %}"></script>
+{% endcompress %}

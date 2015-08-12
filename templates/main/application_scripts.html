@@ -1,0 +1,15 @@
+{% load compress %}
+{% load staticfiles %}
+
+{% compress js %}
+    <script src="{% static "apps/main/app.js" %}"></script>
+    <script src="{% static "apps/main/controllers/globalController.js" %}"></script>
+    <script src="{% static "apps/main/controllers/homeController.js" %}"></script>
+    <script src="{% static "apps/main/controllers/taskController.js" %}"></script>
+    <script src="{% static "apps/main/controllers/categoryController.js" %}"></script>
+    <script src="{% static "apps/main/controllers/sprintController.js" %}"></script>
+    <script src="{% static "apps/main/controllers/statsController.js" %}"></script>
+    <script src="{% static "apps/main/services/taskService.js" %}"></script>
+    <script src="{% static "apps/main/services/sprintService.js" %}"></script>
+    <script src="{% static "apps/main/services/categoryService.js" %}"></script>
+{% endcompress %}
