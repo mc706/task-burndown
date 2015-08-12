@@ -2,7 +2,10 @@
 This directory houses all of the angular codebase. 
 
 ###app.js
-the initiator or the angular application
+the initiator of the angular application
+
+###config
+houses all of the application configuration
 
 ###controllers
 houses all of the controllers

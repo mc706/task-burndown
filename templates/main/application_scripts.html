@@ -3,6 +3,9 @@
 
 {% compress js %}
     <script src="{% static "apps/main/app.js" %}"></script>
+    <script src="{% static "apps/main/config/csrf.js" %}"></script>
+    <script src="{% static "apps/main/config/logger.js" %}"></script>
+    <script src="{% static "apps/main/config/routes.js" %}"></script>
     <script src="{% static "apps/main/controllers/globalController.js" %}"></script>
     <script src="{% static "apps/main/controllers/homeController.js" %}"></script>
     <script src="{% static "apps/main/controllers/taskController.js" %}"></script>
